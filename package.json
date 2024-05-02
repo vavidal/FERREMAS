@@ -1,0 +1,11 @@
+{
+  "name": "ferremas",
+  "version": "1.0.0",
+  "description": "Trabajo Integración",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grupo 9",
+  "license": "ISC"
+}
