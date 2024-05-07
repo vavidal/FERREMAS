@@ -25,6 +25,10 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/inicio',(req,res)=>{
+  res.render('inicio')
+});
+
 app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}`);
   }); 
