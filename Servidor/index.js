@@ -29,6 +29,18 @@ app.get('/inicio',(req,res)=>{
   res.render('inicio')
 });
 
+app.get('/herramienta_electrica', (req, res) => {
+  const query = 'CALL PRC_PRODS(1);';  // Modify this query based on your database schema
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.render('herelec', { tools: results[0] });
+  });
+});
+
 app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}`);
   }); 
