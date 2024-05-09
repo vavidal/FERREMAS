@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mysqlConnection = require('../Servidor/mysql');
+/*const webpay = require('../Servidor/transbank');              WEBPAY*/
 const { redirect } = require('express/lib/response');
 const bodyParser = require('body-parser');
 
@@ -40,6 +41,30 @@ app.get('/herramienta_electrica', (req, res) => {
     res.render('herelec', { tools: results[0] });
   });
 });
+
+
+/*WEBPAY
+
+app.get('/eb',(req, res)=>{
+  let urlReturn = '/';
+let urlFinal = '/';
+let amount = 10000;
+let sessionId = 'sesion123456';
+let buyOrder = 'ordenCompra123456';
+
+transaction.create(buyOrder, sessionId, amount, urlReturn)
+  .then(response => {
+    // Aquí manejas la respuesta inicial, guardas los tokens si es necesario, etc.
+    console.log(response);
+    // Redireccionar al usuario al formulario de Webpay
+    // response.url contiene la URL y response.token contiene el token de la transacción
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+}); */
+
 
 app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}`);
