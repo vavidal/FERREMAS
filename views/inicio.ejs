@@ -17,19 +17,43 @@
 </head>
 <body> 
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a href="../html/login.html">
-                <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas">
-            </a>  
-            <div class="container-fluid">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="Buscar" placeholder="Busca tu producto..." aria-label="Buscar">
-                <button class="btn btn-warning" type="submit"> Buscar </button>
-              </form>
-            </div>                   
-      </nav>
-
+            <a href="/inicio">
+                <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Pinturas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Herramientas Eléctricas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Herramientas Metálicas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cemento</a>
+                    </li>
+                    <!-- Añade más categorías según necesites -->
+                </ul>
+                <form class="d-flex ms-auto" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
+                    <button class="btn btn-warning" type="submit">Buscar</button>
+                    <!-- Ícono de carrito -->
+                    <a href="#" class="btn btn-outline-warning ms-2">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </nav>
+    </header> 
       <!--Carrusel de fotos-->
   <div id="carouselInicio" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
