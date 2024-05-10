@@ -5,7 +5,7 @@ const { redirect } = require('express/lib/response');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 3000;
+const port = 3010;
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
