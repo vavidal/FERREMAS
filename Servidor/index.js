@@ -42,6 +42,30 @@ app.get('/herramienta_electrica', (req, res) => {
   });
 });
 
+app.get('/pinturas', (req, res) => {
+  const query = 'CALL PRC_PRODS(2);';  
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.render('paint', { tools: results[0] });
+  });
+});
+
+app.get('/materiales', (req, res) => {
+  const query = 'CALL PRC_PRODS(3);';  
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.render('mats', { tools: results[0] });
+  });
+});
+
 app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}`);
   }); 

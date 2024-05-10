@@ -14,45 +14,45 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-              <a href="/inicio">
-                  <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="/pinturas">Pinturas</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="/herramienta_electrica">Herramientas Eléctricas</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="/materiales">Materiales de Construcción</a>
-                      </li>
-                  </ul>
-                  <form class="d-flex ms-auto" role="search">
-                      <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
-                      <button class="btn btn-warning" type="submit">Buscar</button>
-                      <!-- Ícono de carrito -->
-                      <a href="#" class="btn btn-outline-warning ms-2">
-                          <i class="fas fa-shopping-cart"></i>
-                      </a>
-                  </form>
-              </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+          <a href="/inicio">
+              <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/pinturas">Pinturas</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/herramienta_electrica">Herramientas Eléctricas</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/materiales">Materiales de Construcción</a>
+                  </li>
+              </ul>
+              <form class="d-flex ms-auto" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
+                  <button class="btn btn-warning" type="submit">Buscar</button>
+                  <!-- Ícono de carrito -->
+                  <a href="#" class="btn btn-outline-warning ms-2">
+                      <i class="fas fa-shopping-cart"></i>
+                  </a>
+              </form>
           </div>
-      </nav>
-    </header>
+      </div>
+  </nav>
+</header>
 
     <div class="container py-4">
         <div class="row">
             <% tools.forEach(tool => { %>
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                     <div class="card h-100 d-flex flex-column">
-                        <img class="card-img-top mb-2" src="/Images/HerrElec/<%= tool.IMG %>" alt="Herramienta" style="height: 150px; object-fit: contain;">
+                        <img class="card-img-top mb-2" src="/Images/Pinturas/<%= tool.IMG %>" alt="Pintura" style="height: 150px; object-fit: contain;">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title mb-2"><%= tool.NOM %> - $<%= tool.VAL/1000 %>.000 CLP</h5>
                             <p class="card-text flex-grow-1"><%= tool.DES %></p>
