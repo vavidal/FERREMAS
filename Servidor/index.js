@@ -96,6 +96,10 @@ app.get('/webpay', asyncHandler(async function (request, response, next) {
 })
 );
 
+app.get('/carrito',(req,res)=>{
+  res.render('cart')
+});
+
 app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}/inicio`);
   }); 
