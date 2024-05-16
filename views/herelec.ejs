@@ -25,14 +25,14 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="/pinturas">Pinturas</a>
+                      </li>
+                      <li class="nav-item">
                           <a class="nav-link" href="/herramienta_electrica">Herramientas Eléctricas</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="/materiales">Materiales de Construcción</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/pinturas">Pinturas</a>
-                    </li>
                   </ul>
                   <form class="d-flex ms-auto" role="search">
                       <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
@@ -56,11 +56,7 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title mb-2"><%= tool.NOM %> - $<%= tool.VAL/1000 %>.000 CLP</h5>
                             <p class="card-text flex-grow-1"><%= tool.DES %></p>
-<<<<<<< HEAD
                             <a class="btn btn-warning mt-2" onclick="aggCar(<%= tool.NUMERITO %>)">Agregar al carrito</a>
-=======
-                            <a class="btn btn-warning mt-2">Agregar al carrito</a>
->>>>>>> 638fe02e908626ce2095450a15d13ef3a388b9a4
                         </div>
                     </div>
                 </div>
@@ -76,6 +72,7 @@
             if (carrito.carro.includes(aidi)) {
                 alert("El elemento ya existe en el carrito");
             }else{
+                carrito.carro.
                 carrito.carro.push(aidi);
                 localStorage.setItem("carrito", JSON.stringify(carrito));
             }
@@ -83,11 +80,6 @@
         }
     </script>
 </body>
-
-<br>
-<br>
-<br>
-
 <footer class="bg-dark text-white pt-4 pb-2">
     <div class="container">
         <div class="row">
@@ -117,10 +109,6 @@
         </div>
     </div>
 </footer>
-
-<br>
-<br>
-<br>
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
