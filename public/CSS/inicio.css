@@ -4,7 +4,9 @@
 
 }
 
+
 .btn-naranja {
+  margin-bottom: auto;
   background-color: #DC661F;
   color: #DC661F;
   border: none; 
@@ -42,7 +44,7 @@
 
   .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: rgba(255, 165, 0, 0.7); 
+  background-color: #DC661F; 
 }
 
 .carousel-control-prev-icon {
@@ -71,7 +73,7 @@ body {
 
 header{
   text-align: center;
-  background-color: black;
+  background-color: white;
   padding: 10px;
 }
 header h3{
@@ -137,7 +139,7 @@ h3{
   width: 100%;
   height: 350px;
   object-fit: cover;  
-  border:8px solid rgb(255, 187, 0);/*rgb(255, 217, 0)*/
+  border:8px solid#DC661F;
   border-radius: 300px;
   max-width: 350px;
 }
