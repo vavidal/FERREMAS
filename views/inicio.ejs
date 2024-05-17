@@ -1,59 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
-    <title> FERREMAS - Productos de Ferreteria y Construcción  </title>
-    <link rel="stylesheet" type="text/css" href="index.ejs">
-    <link rel="stylesheet" href="/CSS/inicio.css">
- 
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" 
-    crossorigin="anonymous">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
+  <title> FERREMAS - Productos de Ferreteria y Construcción </title>
+  <link rel="stylesheet" type="text/css" href="index.ejs">
+  <link rel="stylesheet" href="/CSS/inicio.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 
 </head>
-<body> 
+
+<body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-          <a href="/">
-              <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" href="/herramienta_electrica">Herramientas Eléctricas</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="/materiales">Materiales de Construcción</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/pinturas">Pinturas</a>
+        <a href="/">
+          <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/herramientas_manuales">Herramientas Manuales</a>
             </li>
-              </ul>
-              <form class="d-flex ms-auto" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
-                  <button class="btn btn-warning" type="submit">Buscar</button>
-                   <!-- Ícono de carrito -->
-                   <a href="#" class="btn btn-outline-warning ms-2">
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-              </form>
-          </div>
+            <li class="nav-item">
+              <a class="nav-link" href="/materiales_basicos">Materiales Básicos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/equipos_seguridad">Equipos de Seguridad</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tornillos_anclajes">Tornillos y Anclajes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/fijaciones_adhesivos">Fijaciones y Adhesivos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/equipos_edicion">Equipos de Medición</a>
+            </li>
+          </ul>
+          <form class="d-flex ms-auto" role="search">
+            <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
+            <button class="btn btn-warning" type="submit">Buscar</button>
+            <!-- Ícono de carrito -->
+            <a href="#" class="btn btn-outline-warning ms-2">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </form>
+        </div>
       </div>
-  </nav>
+    </nav>
   </header>
 
-   <!-- CARRUSEL DE FOTOS -->
+  <!-- CARRUSEL DE FOTOS -->
   <div id="carouselExampleDark" class="carousel carousel-dark slide">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
@@ -85,75 +97,97 @@
   </div>
 
 
-<section id="art-d">
-  <div class="text-center" pt-5>
-    <br>
-    <h2> Productos </h2>
-  </div>
-
-
-  <!-- CATEGORIA DE PRODUCTOS -->
-  <div class="row">
-    <div class="col-lg-4 col-md-6 text-center"> 
-      <img src="/Images/Herramientas.jpg" alt="Productos" class="img-fluid">
-      <br> 
-      <a href="/herramienta_electrica" class="btn btn-warning"> Herramientas eléctricas </a>
-    </div>
-
-    <div class="col-lg-4 col-md-6 text-center">
-      <img src="/Images/Construccion.jpg" alt="Productos" class="img-fluid">
+  <section id="art-d">
+    <div class="text-center" pt-5>
       <br>
-      <a href="/materiales" class="btn btn-warning"> Materiales de construcción </a>
+      <h2> Productos </h2>
     </div>
 
-    <div class= "col-lg-4 col-md-6 text-center">
-      <img src="/Images/Pinturas.jpg" alt="Productos" class="img-fluid">
-      <br>
-      <a href="/pinturas" class="btn btn-warning" > Pinturas y recubrimientos </a>
+
+    <!-- CATEGORIA DE PRODUCTOS -->
+    <div class="row">
+      <div class="col-lg-4 col-md-6 text-center">
+        <img src="/Images/Categorías/1.hm.jpg" alt="Productos" class="img-fluid">
+        <br>
+        <a href="//herramientas_manuales" class="btn btn-warning"> Herramientas Manuales </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6 text-center">
+        <img src="/Images/Categorías/2.mb.jpg" alt="Productos" class="img-fluid">
+        <br>
+        <a href="//materiales_basicos" class="btn btn-warning"> Materiales Básicos </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6 text-center">
+        <img src="/Images/Categorías/3.es.jpg" alt="Productos" class="img-fluid">
+        <br>
+        <a href="//equipos_seguridad" class="btn btn-warning"> Equipos de Seguridad </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6 text-center">
+        <img src="/Images/Categorías/4.ta.jpg" alt="Productos" class="img-fluid">
+        <br>
+        <a href="//tornillos_anclajes" class="btn btn-warning"> Tornillos y Anclajes </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6 text-center">
+        <img src="/Images/Categorías/5.fa.jpg" alt="Productos" class="img-fluid">
+        <br>
+        <a href="//fijaciones_adhesivos" class="btn btn-warning"> Fijaciones y Adhesivos </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6 text-center">
+        <img src="/Images/Categorías/6.em.jpg" alt="Productos" class="img-fluid">
+        <br>
+        <a href="//equipos_edicion" class="btn btn-warning"> Equipos de Medición </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
 
 
-<footer class="bg-dark text-white pt-4 pb-2">
-  <div class="container">
+  <footer class="bg-dark text-white pt-4 pb-2">
+    <div class="container">
       <div class="row">
-          <div class="col-md-4 mb-3">
-              <h5>Sobre Ferremas</h5>
-              <p>Ferremas, líderes en venta de herramientas y materiales de construcción. Fundada en 2000, nuestro compromiso es ofrecer productos de calidad al mejor precio. Visítanos y encuentra todo lo que necesitas para tus proyectos.</p>
-          </div>
-          <div class="col-md-4 mb-3">
-              <h5>Contacto</h5>
-              <ul class="list-unstyled">
-                  <li>Teléfono: +569 1234 5678</li>
-                  <li>Email: contacto@ferremas.cl</li>
-                  <li>Dirección: Calle Falsa 123, Santiago, Chile</li>
-              </ul>
-          </div>
-          <div class="col-md-4 mb-3">
-              <h5>Síguenos</h5>
-              <a href="#" class="text-white me-2" style="font-size: 24px;"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="text-white me-2" style="font-size: 24px;"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="text-white" style="font-size: 24px;"><i class="fab fa-linkedin-in"></i></a>
-          </div>
+        <div class="col-md-4 mb-3">
+          <h5>Sobre Ferremas</h5>
+          <p>Ferremas, líderes en venta de herramientas y materiales de construcción. Fundada en 2000, nuestro
+            compromiso es ofrecer productos de calidad al mejor precio. Visítanos y encuentra todo lo que necesitas para
+            tus proyectos.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Contacto</h5>
+          <ul class="list-unstyled">
+            <li>Teléfono: +569 1234 5678</li>
+            <li>Email: contacto@ferremas.cl</li>
+            <li>Dirección: Calle Falsa 123, Santiago, Chile</li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Síguenos</h5>
+          <a href="#" class="text-white me-2" style="font-size: 24px;"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-2" style="font-size: 24px;"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white" style="font-size: 24px;"><i class="fab fa-linkedin-in"></i></a>
+        </div>
       </div>
       <div class="row mt-3">
-          <div class="col-12 text-center">
-              <p>© 2024 Ferremas. Todos los derechos reservados.</p>
-          </div>
+        <div class="col-12 text-center">
+          <p>© 2024 Ferremas. Todos los derechos reservados.</p>
+        </div>
       </div>
-  </div>
-</footer>
+    </div>
+  </footer>
 
 
 
-<!--Para que funcionen los elementos de Bootstap-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  <!--Para que funcionen los elementos de Bootstap-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
 
 </body>
+
 </html>
