@@ -1,6 +1,6 @@
-.logo-img{
-    width: 50px;
-    height: auto;
+.logo-img {
+  width: 50px;
+  height: auto;
 
 }
 
@@ -9,46 +9,46 @@
   margin-bottom: auto;
   background-color: #DC661F;
   color: #DC661F;
-  border: none; 
+  border: none;
 }
 
 .btn-naranja:hover {
-  background-color: darkorange; 
+  background-color: darkorange;
 }
 
 
 .navbar-nav .nav-link {
-    color: #DC661F; 
-  }
+  color: #DC661F;
+}
 
-  .navbar-nav .nav-link {
-    color:#DC661F
-  }
-    
-  .navbar-nav .nav-link {
-    font-size: 16px; 
-  }
+.navbar-nav .nav-link {
+  color: #DC661F
+}
 
-  .carousel img {
-    object-fit: cover; 
-    height: 400px; 
-  }
+.navbar-nav .nav-link {
+  font-size: 16px;
+}
 
-  .carousel-indicators [data-bs-target] {
-    background-color: #DC661F;
-  }
-  
-  .carousel-indicators .active {
-    background-color: darkorange; 
-  }
+.carousel img {
+  object-fit: cover;
+  height: 400px;
+}
 
-  .carousel-control-prev-icon,
+.carousel-indicators [data-bs-target] {
+  background-color: #DC661F;
+}
+
+.carousel-indicators .active {
+  background-color: darkorange;
+}
+
+.carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: #DC661F; 
+  background-color: #DC661F;
 }
 
 .carousel-control-prev-icon {
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
 
 .carousel-control-next-icon {
@@ -57,26 +57,30 @@
 
 
 body {
-    /*background-image: url(../IMAGENES/Diseño\ sin\ título.png);*/
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment:fixed ;
-    background-position: 500%;
-    font-family: Arial, sans-serif;   
-    text-align: center;
+  /*background-image: url(../IMAGENES/Diseño\ sin\ título.png);*/
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 500%;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.h1{
+.h1 {
   color: #DC661F;
 }
 
-header{
+header {
   text-align: center;
   background-color: white;
   padding: 10px;
 }
-header h3{
+
+header h3 {
   color: #DC661F;
   font-size: 30px;
 }
@@ -84,69 +88,78 @@ header h3{
 
 .btn-primary {
   color: #DC661F;
-  border: none; 
-  color: white; 
+  border: none;
+  color: white;
   height: 40px;
 }
 
 
 .btn-primary:hover {
-  background-color: #DC661F; 
+  background-color: #DC661F;
 }
 
 .img-fluid {
-  max-width: 100%; 
-  height: auto; 
+  max-width: 100%;
+  height: auto;
 }
 
 
 
-#texto{
+#texto {
   display: grid;
   place-items: center;
 }
-#texto h3{
+
+#texto h3 {
   font-size: 45px;
   font-weight: 600;
-  text-shadow: 
-  -1px -1px 0 rgb(43, 41, 41),
-  1px -1px 0 rgb(43, 41, 41),
-  1px 1px 0 rgb(43, 41, 41),
-  -1px 1px 0 rgb(43, 41, 41);  
+  text-shadow:
+    -1px -1px 0 rgb(43, 41, 41),
+    1px -1px 0 rgb(43, 41, 41),
+    1px 1px 0 rgb(43, 41, 41),
+    -1px 1px 0 rgb(43, 41, 41);
   max-width: 600px;
 }
+
 #art-d h2,
-#pro h2{
+#pro h2 {
   font-size: 60px;
   font-weight: 800;
   color: #DC661F;
   letter-spacing: 0.1em;
 }
-h3{
+
+h3 {
   font-size: 45px;
   font-weight: 600;
 }
 
-#art-d{
+#art-d {
   padding-top: 20px;
   margin: 20px;
 }
-#art-d .col-lg-4{
+
+#art-d .col-lg-4 {
   margin: 0 !important;
   padding: 40px;
 }
-#art-d img{
+
+#art-d img {
   width: 100%;
   height: 350px;
-  object-fit: cover;  
-  border:8px solid#DC661F;
+  object-fit: cover;
+  border: 8px solid#DC661F;
   border-radius: 300px;
   max-width: 350px;
 }
-.accordion-item button{
+
+.accordion-item button {
   font-size: 25px;
   font-weight: 600;
-  display:grid;
+  display: grid;
   text-align: center;
 }
 
+footer {
+  margin-top: auto;
+}

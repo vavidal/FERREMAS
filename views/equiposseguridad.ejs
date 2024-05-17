@@ -1,69 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
-    <title>Herramientas - Ferremas</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
+  <title> FERREMAS - Productos de Ferreteria y Construcción </title>
+  <link rel="stylesheet" type="text/css" href="index.ejs">
+  <link rel="stylesheet" href="/CSS/inicio.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-              <a href="/">
-                  <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Categorías
               </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                      <a class="nav-link" href="/herramienta_electrica">Herramientas Eléctricas</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="/materiales">Materiales de Construcción</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pinturas">Pinturas</a>
-                </li>
-                  </ul>
-                  <form class="d-flex ms-auto" role="search">
-                      <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
-                      <button class="btn btn-warning" type="submit">Buscar</button>
-                       <!-- Ícono de carrito -->
-                       <a href="#" class="btn btn-outline-warning ms-2">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                  </form>
-              </div>
-          </div>
-      </nav>
-      </header>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/herramientas_manuales">Herramientas Manuales</a></li>
+                <li><a class="dropdown-item" href="/materiales_basicos">Materiales Básicos</a></li>
+                <li><a class="dropdown-item" href="/equipos_seguridad">Equipos de Seguridad</a></li>
+                <li><a class="dropdown-item" href="/tornillos_anclajes">Tornillos y Anclajes</a></li>
+                <li><a class="dropdown-item" href="/fijaciones_adhesivos">Fijaciones y Adhesivos</a></li>
+                <li><a class="dropdown-item" href="/equipos_edicion">Equipos de Medición</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/nosotros">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contacto">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/informacion_pedido">
+                Información de tu pedido <i class="fas fa-truck"></i>
+              </a>
+            </li>
+          </ul>
+          <form class="d-flex ms-auto" role="search">
+            <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
+            <button class="btn btn-warning" type="submit">Buscar</button>
+            <!-- Ícono de carrito -->
+            <a href="#" class="btn btn-outline-warning ms-2">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
 
     <div class="container py-4">
         <div class="row">
-            <% tools.forEach(tool => { %>
+            <% tools.forEach(tool=> { %>
                 <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                     <div class="card h-100 d-flex flex-column">
-                        <img class="card-img-top mb-2" src="/Images/Construccion/<%= tool.IMG %>" alt="Construcción" style="height: 150px; object-fit: contain;">
+                        <img class="card-img-top mb-2" src="/Images/equiposseguridad/<%= tool.IMG %>" alt="Construcción"
+                            style="height: 150px; object-fit: contain;">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title mb-2"><%= tool.NOM %> - $<%= tool.VAL/1000 %>.000 CLP</h5>
-                            <p class="card-text flex-grow-1"><%= tool.DES %></p>
-                            <a class="btn btn-warning mt-2" value =<%= tool.NUMERITO %>>Agregar al carrito</a>
+                            <h5 class="card-title mb-2">
+                                <%= tool.NOM %> - $<%= tool.VAL/1000 %>.000 CLP
+                            </h5>
+                            <p class="card-text flex-grow-1">
+                                <%= tool.DES %>
+                            </p>
+                            <a class="btn btn-warning mt-2" value=<%=tool.NUMERITO %>>Agregar al carrito</a>
                         </div>
                     </div>
                 </div>
-            <% }); %>
+                <% }); %>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <footer class="bg-dark text-white pt-4 pb-2">
@@ -71,7 +99,10 @@
         <div class="row">
             <div class="col-md-4 mb-3">
                 <h5>Sobre Ferremas</h5>
-                <p>Ferremas, líderes en venta de herramientas y materiales de construcción. Fundada en 2000, nuestro compromiso es ofrecer productos de calidad al mejor precio. Visítanos y encuentra todo lo que necesitas para tus proyectos.</p>
+                <p>Ferremas, líderes en venta de herramientas y materiales de construcción. Fundada en 2000, nuestro
+                    compromiso es ofrecer productos de calidad al mejor precio. Visítanos y encuentra todo lo que
+                    necesitas para
+                    tus proyectos.</p>
             </div>
             <div class="col-md-4 mb-3">
                 <h5>Contacto</h5>
@@ -96,10 +127,14 @@
     </div>
 </footer>
 
-<br>
-<br>
-<br>
-
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<!-- Scripts necesarios -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qNyK6D/H6fCdCBfQ6xFzDk9D9E9T3aHD6pZ5O7E5S2TlaFT5CVL3BpZZTg26B6aq"
+    crossorigin="anonymous"></script>
+<!--Para que funcionen los elementos de Bootstap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+</body>
 
 </html>

@@ -93,7 +93,7 @@ app.get('/fijaciones_adhesivos', (req, res) => {
   });
 });
 
-app.get('/equipos_edicion', (req, res) => {
+app.get('/equipos_medicion', (req, res) => {
   const query = 'CALL PRC_PRODS(6);';  
   mysqlConnection.query(query, (error, results) => {
     if (error) {
