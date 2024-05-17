@@ -33,7 +33,7 @@ app.get('/',(req,res)=>{
   res.render('inicio')
 });
 
-app.get('/herramienta_electrica', (req, res) => {
+app.get('/herramientas_manuales', (req, res) => {
   const query = 'CALL PRC_PRODS(1);';  
   mysqlConnection.query(query, (error, results) => {
     if (error) {
@@ -41,11 +41,11 @@ app.get('/herramienta_electrica', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    res.render('herelec', { tools: results[0] });
+    res.render('herramientasmanuales', { tools: results[0] });
   });
 });
 
-app.get('/pinturas', (req, res) => {
+app.get('/materiales_basicos', (req, res) => {
   const query = 'CALL PRC_PRODS(2);';  
   mysqlConnection.query(query, (error, results) => {
     if (error) {
@@ -53,11 +53,11 @@ app.get('/pinturas', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    res.render('paint', { tools: results[0] });
+    res.render('materialesbasicos', { tools: results[0] });
   });
 });
 
-app.get('/materiales', (req, res) => {
+app.get('/equipos_seguridad', (req, res) => {
   const query = 'CALL PRC_PRODS(3);';  
   mysqlConnection.query(query, (error, results) => {
     if (error) {
@@ -65,7 +65,43 @@ app.get('/materiales', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    res.render('mats', { tools: results[0] });
+    res.render('equiposseguridad', { tools: results[0] });
+  });
+});
+
+app.get('/tornillos_anclajes', (req, res) => {
+  const query = 'CALL PRC_PRODS(4);';  
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.render('tornillosanclajes', { tools: results[0] });
+  });
+});
+
+app.get('/fijaciones_adhesivos', (req, res) => {
+  const query = 'CALL PRC_PRODS(5);';  
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.render('fijacionesadhesivos', { tools: results[0] });
+  });
+});
+
+app.get('/equipos_edicion', (req, res) => {
+  const query = 'CALL PRC_PRODS(6);';  
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.render('equiposmedicion', { tools: results[0] });
   });
 });
 
