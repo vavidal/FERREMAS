@@ -33,6 +33,22 @@ app.get('/',(req,res)=>{
   res.render('inicio')
 });
 
+app.get('/contacto',(req,res)=>{
+  res.render('contacto')
+});
+
+app.get('/blog',(req,res)=>{
+  res.render('blog')
+});
+
+app.get('/nosotros',(req,res)=>{
+  res.render('nosotros')
+});
+
+app.get('/informacion_pedido',(req,res)=>{
+  res.render('informacion_pedido')
+});
+
 app.get('/herramientas_manuales', (req, res) => {
   const query = 'CALL PRC_PRODS(1);';  
   mysqlConnection.query(query, (error, results) => {
