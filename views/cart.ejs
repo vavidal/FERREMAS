@@ -13,40 +13,60 @@
     <script src="/Js/carrito.js" async></script>
 </head>
 
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a href="/inicio">
-                    <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/pinturas">Pinturas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/herramienta_electrica">Herramientas Eléctricas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/materiales">Materiales de Construcción</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex ms-auto" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
-                        <button class="btn btn-warning" type="submit">Buscar</button>
-                        <!-- Ícono de carrito -->
-                        <a href="#" class="btn btn-outline-warning ms-2">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body onload="cargarCarrito()">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Categorías
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/herramientas_manuales">Herramientas Manuales</a></li>
+                <li><a class="dropdown-item" href="/materiales_basicos">Materiales Básicos</a></li>
+                <li><a class="dropdown-item" href="/equipos_seguridad">Equipos de Seguridad</a></li>
+                <li><a class="dropdown-item" href="/tornillos_anclajes">Tornillos y Anclajes</a></li>
+                <li><a class="dropdown-item" href="/fijaciones_adhesivos">Fijaciones y Adhesivos</a></li>
+                <li><a class="dropdown-item" href="/equipos_medicion">Equipos de Medición</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/nosotros">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contacto">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/informacion_pedido">
+                Información de tu pedido <i class="fas fa-truck"></i>
+              </a>
+            </li>
+          </ul>
+          <form class="d-flex ms-auto" role="search">
+            <input class="form-control me-2" type="search" placeholder="Busca tu producto..." aria-label="Buscar">
+            <button class="btn btn-warning" type="submit">Buscar</button>
+            <!-- Ícono de carrito -->
+            <a href="/carrito" class="btn btn-outline-warning ms-2">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
 
     <section class="h-100 h-custom bg-warning-subtle">
         <div class="container py-5 h-100">
@@ -63,104 +83,6 @@
                         </div>
 
                         <div class="item-carrito">
-                          <!--producto 1-->
-                          <div class="row mb-4 d-flex justify-content-between align-items-center fila-carrito">
-                            <div class="col-md-2 col-lg-2 col-xl-2">
-                              <img
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                                class="img-fluid rounded-3" alt="Cotton T-shirt">
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-3">
-                              <h6 class="text-muted">Item 1</h6>
-                              <h6 class="text-black mb-0">Este es el item 1</h6>
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                onclick="updateQuantity(this, 'decrease')">
-                                <i class="fas fa-minus"></i>
-                              </button>
-        
-                              <input id="cantidad" class="form-control form-control-sm cantidad" min="0" name="quantity" value="1" type="number"/>
-        
-                              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                onclick="updateQuantity(this, 'increase')">
-                                <i class="fas fa-plus"></i>
-                              </button>
-                            </div>
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                              <h6  class="mb-0 precio">$120.000</h6>
-                            </div>
-                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                              <a href="#!"  class="text-muted"><i class="fas fa-times eliminar"></i></a>
-                            </div>
-                          </div>
-                          <!--fin producto 1-->
-        
-                          <!--producto 2-->
-                          <div class="row mb-4 d-flex justify-content-between align-items-center fila-carrito">
-                            <div class="col-md-2 col-lg-2 col-xl-2">
-                              <img
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img2.webp"
-                                class="img-fluid rounded-3" alt="Cotton T-shirt">
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-3">
-                              <h6 class="text-muted">Item 2</h6>
-                              <h6 class="text-black mb-0">Este es el item 2</h6>
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                onclick="updateQuantity(this, 'decrease')">
-                                <i class="fas fa-minus"></i>
-                              </button>
-        
-                              <input id="cantidad" class="form-control form-control-sm cantidad" min="0" name="quantity" value="1" type="number"/>
-        
-                              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                onclick="updateQuantity(this, 'increase')">
-                                <i class="fas fa-plus"></i>
-                              </button>
-                            </div>
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                              <h6  class="mb-0 precio">$98.000</h6>
-                            </div>
-                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                              <a href="#!"  class="text-muted"><i class="fas fa-times eliminar"></i></a>
-                            </div>
-                          </div>
-                          <!--fin producto 2-->
-
-                          <!--producto 3-->
-                          <div class="row mb-4 d-flex justify-content-between align-items-center fila-carrito">
-                            <div class="col-md-2 col-lg-2 col-xl-2">
-                              <img
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img3.webp"
-                                class="img-fluid rounded-3" alt="Cotton T-shirt">
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-3">
-                              <h6 class="text-muted">Item 3</h6>
-                              <h6 class="text-black mb-0">Este es el item 3</h6>
-                            </div>
-                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                onclick="updateQuantity(this, 'decrease')">
-                                <i class="fas fa-minus"></i>
-                              </button>
-        
-                              <input id="cantidad" class="form-control form-control-sm cantidad" min="0" name="quantity" value="1" type="number"/>
-        
-                              <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                onclick="updateQuantity(this, 'increase')">
-                                <i class="fas fa-plus"></i>
-                              </button>
-                            </div>
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                              <h6  class="mb-0 precio">$225.000</h6>
-                            </div>
-                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                              <a href="#!"  class="text-muted"><i class="fas fa-times eliminar"></i></a>
-                            </div>
-                          </div>
-                          <!--fin producto 3-->
                         </div>
       
                         <hr class="my-4">
@@ -179,7 +101,7 @@
                           <div class="d-flex justify-content-between mb-5">
                             <h5 class="text-uppercase">Precio total</h5>
                             <h5 id="precio" name="precio"></h5>
-                            <input type="number" id="total" name="total">
+                            <input type="number" id="total" name="total" value="0" hidden>
                           </div>
                           <input  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg"
                             data-mdb-ripple-color="dark" value="Pagar">

@@ -3,7 +3,7 @@
 // Buscar y almacenar referencias a elementos relevantes
 var itemCarrito = document.querySelector(".item-carrito");
 var precioTotalElement = document.getElementById("precio");
-var total = document.getElementById("valor");
+var total = document.getElementById("total");
 // Agregar un solo controlador de eventos al contenedor del carrito
 itemCarrito.addEventListener('click', function(event) {
     var target = event.target;
@@ -57,8 +57,6 @@ function actualizarTotalCarrito(){
         var subtotal = precio * cantidad;
         totalCarrito += subtotal;
     });
-
-    console.log(totalCarrito*1000);
     precioTotalElement.textContent = "$" + totalCarrito.toFixed(3);
     total.value = totalCarrito*1000; // Actualiza el precio total del carrito
 }
