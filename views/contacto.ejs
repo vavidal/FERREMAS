@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
+    <title> FERREMAS - Productos de Ferreteria y Construcción </title>
+    <link rel="stylesheet" type="text/css" href="index.ejs">
+    <link rel="stylesheet" href="/CSS/inicio.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img class="logo-img" src="/Images/Logo Ferremas.png" alt="Logo Ferremas" style="width: 100px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Categorías
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/herramientas_manuales">Herramientas Manuales</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/materiales_basicos">Materiales Básicos</a></li>
+                                <li><a class="dropdown-item" href="/equipos_seguridad">Equipos de Seguridad</a></li>
+                                <li><a class="dropdown-item" href="/tornillos_anclajes">Tornillos y Anclajes</a></li>
+                                <li><a class="dropdown-item" href="/fijaciones_adhesivos">Fijaciones y Adhesivos</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/equipos_medicion">Equipos de Medición</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/nosotros">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contacto">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/informacion_pedido">
+                                Información de tu pedido <i class="fas fa-truck"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="d-flex ms-auto" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Busca tu producto..."
+                            aria-label="Buscar">
+                        <button class="btn btn-warning" type="submit">Buscar</button>
+                        <!-- Ícono de carrito -->
+                        <a href="#" class="btn btn-outline-warning ms-2">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Contacto y Sugerencias</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" class="form-control" id="telefono" placeholder="Teléfono">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" rows="4" placeholder="Mensaje"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3>Oficina de ventas</h3>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> <strong>Dirección:</strong> Manuel Rodríguez 123, Santiago, Chile<br>
+                    <i class="fas fa-phone"></i> <strong>Teléfono:</strong> +569 1234 5678<br>
+                    <i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:ventasweb@weitzler.cl">ventasweb@ferremas.cl</a><br>
+                </p>
+                <p>
+                    <strong>Horario:</strong><br>
+                    <i class="far fa-clock"></i> Lunes a Viernes: 08:30 a 12:30 y 14:30 a 18:30 hrs.<br>
+                    <i class="far fa-clock"></i> Sábados: 08:30 a 12:30 hrs.<br>
+                    <i class="far fa-times-circle"></i> Domingos, feriados y festivos: cerrado
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white pt-4 pb-2 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>Sobre Ferremas</h5>
+                    <p>Ferremas, líderes en venta de herramientas y materiales de construcción. Fundada en 2000, nuestro
+                        compromiso es ofrecer productos de calidad al mejor precio. Visítanos y encuentra todo lo que
+                        necesitas para tus proyectos.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li>Teléfono: +569 1234 5678</li>
+                        <li>Email: ventasweb@ferremas.cl</li>
+                        <li>Dirección: Manuel Rodríguez 123, Santiago, Chile</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Síguenos</h5>
+                    <a href="#" class="text-white me-2" style="font-size: 24px;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-2" style="font-size: 24px;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white" style="font-size: 24px;"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p>© 2024 Ferremas. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts necesarios -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qNyK6D/H6fCdCBfQ6xFzDk9D9E9T3aHD6pZ5O7E5S2TlaFT5CVL3BpZZTg26B6aq"
+        crossorigin="anonymous"></script>
+    <!--Para que funcionen los elementos de Bootstap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

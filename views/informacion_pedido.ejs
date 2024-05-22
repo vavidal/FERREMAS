@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
-  <title> FERREMAS - Productos de Ferreteria y Construcción </title>
+  <title> FERREMAS - Productos de Ferretería y Construcción </title>
   <link rel="stylesheet" type="text/css" href="index.ejs">
   <link rel="stylesheet" href="/CSS/inicio.css">
   <!-- Font Awesome -->
@@ -70,99 +70,30 @@
     </nav>
   </header>
 
-  <!-- CARRUSEL DE FOTOS -->
-  <div id="carouselExampleDark" class="carousel carousel-dark slide">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="/Images/1.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
+  <div class="container mt-5">
+    <h2>Información De Tu Pedido</h2>
+    <p>Para hacer seguimiento de tu pedido, por favor introduce el ID de tu pedido en el cuadro de abajo y pulsa el botón «Seguir». Esto se envió en tu recibo y en el correo electrónico de confirmación que deberías haber recibido.</p>
+    <form>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="idPedido" class="form-label"><strong>ID de pedido</strong></label>
+          <input type="text" class="form-control" id="idPedido" placeholder="Se encuentra en tu correo electrónico de confirmación de pedido.">
+        </div>
+        <div class="col-md-6">
+          <label for="emailFactura" class="form-label"><strong>Correo electrónico de facturación</strong></label>
+          <input type="email" class="form-control" id="emailFactura" placeholder="El correo electrónico que utilizaste durante el pago.">
         </div>
       </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="/Images/2.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="/Images/3.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden"> Anterior </span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden"> Siguiente </span>
-    </button>
+      <button type="submit" class="btn btn-primary">Seguir</button>
+    </form>
   </div>
 
-  <section id="art-d">
-    <div class="text-center" pt-5>
-      <br>
-      <h2> Productos </h2>
-    </div>
-
-    <!-- CATEGORIA DE PRODUCTOS -->
-    <div class="row">
-      <div class="col-lg-4 col-md-6 text-center">
-        <img src="/Images/Categorías/1.hm.jpg" alt="Productos" class="img-fluid">
-        <br>
-        <a href="/herramientas_manuales" class="btn btn-warning"> Herramientas Manuales </a>
-      </div>
-
-      <div class="col-lg-4 col-md-6 text-center">
-        <img src="/Images/Categorías/2.mb.jpg" alt="Productos" class="img-fluid">
-        <br>
-        <a href="/materiales_basicos" class="btn btn-warning"> Materiales Básicos </a>
-      </div>
-
-      <div class="col-lg-4 col-md-6 text-center">
-        <img src="/Images/Categorías/3.es.jpg" alt="Productos" class="img-fluid">
-        <br>
-        <a href="/equipos_seguridad" class="btn btn-warning"> Equipos de Seguridad </a>
-      </div>
-
-      <div class="col-lg-4 col-md-6 text-center">
-        <img src="/Images/Categorías/4.ta.jpg" alt="Productos" class="img-fluid">
-        <br>
-        <a href="/tornillos_anclajes" class="btn btn-warning"> Tornillos y Anclajes </a>
-      </div>
-
-      <div class="col-lg-4 col-md-6 text-center">
-        <img src="/Images/Categorías/5.fa.jpg" alt="Productos" class="img-fluid">
-        <br>
-        <a href="/fijaciones_adhesivos" class="btn btn-warning"> Fijaciones y Adhesivos </a>
-      </div>
-
-      <div class="col-lg-4 col-md-6 text-center">
-        <img src="/Images/Categorías/6.em.jpg" alt="Productos" class="img-fluid">
-        <br>
-        <a href="/equipos_medicion" class="btn btn-warning"> Equipos de Medición </a>
-      </div>
-    </div>
-  </section>
-
-  <br>
-  <br>
-  <br>
-
-  <footer class="bg-dark text-white pt-4 pb-2">
+  <footer class="bg-dark text-white pt-4 pb-2 mt-5">
     <div class="container">
       <div class="row">
         <div class="col-md-4 mb-3">
           <h5>Sobre Ferremas</h5>
-          <p>Ferremas, líderes en venta de herramientas y materiales de construcción. Fundada en 2000, nuestro
-            compromiso es ofrecer productos de calidad al mejor precio. Visítanos y encuentra todo lo que necesitas para
-            tus proyectos.</p>
+          <p>Ferremas, líderes en venta de herramientas y materiales de construcción. Fundada en 2000, nuestro compromiso es ofrecer productos de calidad al mejor precio. Visítanos y encuentra todo lo que necesitas para tus proyectos.</p>
         </div>
         <div class="col-md-4 mb-3">
           <h5>Contacto</h5>
