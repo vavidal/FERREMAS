@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body onload="action()">
+    <p>Total a pagar: <%= datos.amount %></p>
     <form action="<%= datos.url %>" method="post">
         <input type="hidden" name="token_ws" value="<%= datos.token %>">
         <input type="submit" value="Pagar">

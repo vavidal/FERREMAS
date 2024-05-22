@@ -2,20 +2,19 @@ const express = require('express');
 const WebpayPlus = require("transbank-sdk").WebpayPlus;
 const asyncHandler = require("../Servidor/async_handler");
 WebpayPlus.configureForTesting();
+const bp = require('body-parser')
 const path = require('path');
 const mysqlConnection = require('../Servidor/mysql');
 /*const webpay = require('../Servidor/transbank');              WEBPAY*/
 const { redirect } = require('express/lib/response');
-const bodyParser = require('body-parser');
 
 const app = express();
 const port = 3010;
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
 
 app.get('/inicio', (req, res) => {
   const query = 'CALL PRC_EMPLEADO();';  
@@ -69,10 +68,13 @@ app.get('/materiales', (req, res) => {
   });
 });
 
-app.get('/webpay', asyncHandler(async function (request, response, next) {
+app.post('/webpay', asyncHandler(async function (request, response) {
+  const datos = request.body;
+  const {total} = datos;
+  const Valor = total;
   let buyOrder = "O-" + Math.floor(Math.random() * 10000) + 1;
   let sessionId = "S-" + Math.floor(Math.random() * 10000) + 1;
-  let amount = Math.floor(Math.random() * 1000) + 1001;
+  let amount = Valor;
   let returnUrl = "http://localhost:3010/";
   const createResponse = await (new WebpayPlus.Transaction()).create(
     buyOrder,
@@ -92,12 +94,14 @@ app.get('/webpay', asyncHandler(async function (request, response, next) {
     token,
     url,
   };
+
   response.render("webpay", {datos : viewData});
+
 })
 );
 
 app.get('/carrito',(req,res)=>{
-  res.render('cart')
+  res.render('cart');
 });
 
 app.listen(port, () => {
