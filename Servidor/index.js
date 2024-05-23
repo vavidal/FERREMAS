@@ -48,6 +48,25 @@ app.get('/informacion_pedido',(req,res)=>{
   res.render('informacion_pedido')
 });
 
+// Trae el producto con el id
+app.get('/producto/:id', (req, res) => {
+  const productId = req.params.id;
+  const query = 'CALL PRC_PRODS(1);';  
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    const product = results[0].find(tool => tool.NUMERITO == productId);
+    if (product) {
+      res.render('producto', { product });
+    } else {
+      res.status(404).send('Producto no encontrado');
+    }
+  });
+});
+
 app.get('/herramientas_manuales', (req, res) => {
   const query = 'CALL PRC_PRODS(1);';  
   mysqlConnection.query(query, (error, results) => {
