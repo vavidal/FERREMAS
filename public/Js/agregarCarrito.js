@@ -1,3 +1,12 @@
+$(document).ready(function() {
+    const carrito = window.localStorage.getItem("carrito");
+    if(carrito == null){
+        let carrito = {carro:[]};
+        window.localStorage.setItem("carrito", JSON.stringify(carrito));
+        console.log("Se ha creado el carrito");
+    }
+});
+
 function aggCar(num) {
     let aidi = num;
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];

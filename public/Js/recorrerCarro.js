@@ -53,7 +53,7 @@ function items(){
                         <i class="fas fa-minus"></i>
                       </button>
             
-                      <input id="cantidad" class="form-control form-control-sm cantidad" min="0" name="quantity" value="1" type="number"/>
+                      <input type="number" id="cantidad" class="form-control form-control-sm cantidad" min="0" max="${producto.CANTIDAD}" name="quantity" value="1">
             
                       <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                         onclick="updateQuantity(this, 'increase')">
