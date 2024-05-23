@@ -64,11 +64,30 @@ function actualizarTotalCarrito(){
     filasCarrito.forEach(function(filaCarrito) {
         var precioItem = filaCarrito.querySelector(".precio");
         var cantidadItem = filaCarrito.querySelector(".cantidad");
-        var precio = parseFloat(precioItem.innerText.replace('$', ''));
-        var cantidad = cantidadItem.value;
-        var subtotal = precio * cantidad;
-        totalCarrito += subtotal;
+        if(precioItem.innerText.length==4){
+            var precio = parseFloat(precioItem.innerText.replace('$', ''));
+            var cantidad = cantidadItem.value;
+            var subtotal =precio * cantidad;
+            totalCarrito += subtotal;
+        }else{
+            var precio = precioItem.innerText.replace('$', '');
+            precio = precio.replace('.', '');
+            precio = parseFloat(precio);
+            var cantidad = cantidadItem.value;
+            var subtotal = precio * cantidad;
+            totalCarrito += subtotal;
+        }
     });
-    precioTotalElement.textContent = "$" + totalCarrito.toFixed(3);
-    total.value = totalCarrito*1000; // Actualiza el precio total del carrito
+    var totalTexto = '$';
+    const miles = Math.floor(totalCarrito/1000);
+    const cientos = totalCarrito%1000;
+    if(miles > 0 && cientos > 0){
+        totalTexto += miles + '.' + cientos;
+    }else if(miles > 0){
+        totalTexto += miles+".000";
+    }else{
+        totalTexto += cientos;
+    }
+    precioTotalElement.textContent = totalTexto;
+    total.value = totalCarrito; // Actualiza el precio total del carrito
 }
