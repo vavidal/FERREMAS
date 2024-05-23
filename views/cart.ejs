@@ -13,7 +13,7 @@
     <script src="/Js/carrito.js" async></script>
 </head>
 
-<body onload="cargarCarrito()">
+<body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -82,7 +82,7 @@
                           <h6 class="mb-0 text-muted"> X PRODUCTOS </h6>
                         </div>
 
-                        <div class="item-carrito">
+                        <div class="item-carrito" id="recorrer">
                         </div>
       
                         <hr class="my-4">
@@ -106,7 +106,6 @@
                           <input  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg"
                             data-mdb-ripple-color="dark" value="Pagar">
                         </form>
-                        
       
                       </div>
                     </div>
@@ -150,7 +149,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/Js/recorrerCarro.js"></script>
 
 </body>
 

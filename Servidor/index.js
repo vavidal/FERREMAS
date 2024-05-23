@@ -156,6 +156,19 @@ app.get('/carrito',(req,res)=>{
   res.render('cart');
 });
 
+app.get('/busqueda/:id', (req, res) => {
+  const id = req.params.id;
+  const query = `CALL PRC_CART(${id});`;  
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.json(results[0]);
+  });
+});
+
 app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}/inicio`);
   }); 

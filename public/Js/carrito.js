@@ -1,5 +1,3 @@
-
-
 // Buscar y almacenar referencias a elementos relevantes
 var itemCarrito = document.querySelector(".item-carrito");
 var precioTotalElement = document.getElementById("precio");
@@ -8,10 +6,24 @@ var total = document.getElementById("total");
 itemCarrito.addEventListener('click', function(event) {
     var target = event.target;
     if (target.classList.contains('eliminar')) {
-        // Eliminar el elemento del carrito
-        target.closest('.fila-carrito').remove();
-        // Recalcular el total del carrito
-        actualizarTotalCarrito();
+        //Eliminar de LocalStorage
+        var fila = target.closest('.fila-carrito');
+        var elemento = fila.querySelector('#aidi').value;
+        console.log(elemento);
+        // Eliminar el elemento del localStorage
+        let carrito = JSON.parse(localStorage.getItem('carrito'));
+        carrito.carro.forEach((element, index) => {
+            if (element == elemento) {
+                carrito.carro.splice(index, 1);
+                //Guardar el arreglo sin el item en el LocalStorage
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                // Eliminar el elemento del carrito
+                fila.remove();
+                // Recalcular el total del carrito
+                items();
+                actualizarTotalCarrito();
+            }
+        });
     } else if (target.classList.contains('increase')) {
         updateQuantity(target, 'increase');
     } else if (target.classList.contains('decrease')) {
