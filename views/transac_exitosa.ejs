@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transacción Exitosa</title>
+</head>
+<body>
+    ¡Transacción Exitosa!
+
+    Token: <%= datos.token %>
+    Commit Response: <%= datos.commitResponse.status %>
+    <div class="datos">
+        <p id="nombre"></p>
+        <p id="rut"></p>
+        <p id="direccion"></p>
+        <p id="mail"></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/Js/confirmar.js"></script>
+    <script>
+        var token = "<%= datos.token %>";
+        window.localStorage.setItem('token',token);
+    </script>
+</body>
+</html>

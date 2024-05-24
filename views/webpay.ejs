@@ -67,12 +67,31 @@
           </div>
         </nav>
     </header>
+
     <h1>Pago Webpay</h1>
     <p id="total"></p>
+
     <form action="<%= datos.url %>" method="post">
+        <div class="row">
+          <label for="">Ingresa tu nombre:</label>
+          <input type="text" name="name" id="nombre" minlength="4" maxlength="50" required>
+        </div>
+        <div class="row">
+          <label for="">Ingresa tu rut, sin puntos y sin guión:</label>
+          <input type="number" name="name" id="rut" min="1000000" max="24000000" required>
+        </div>
+        <div class="row">
+          <label for="">Ingresa tu email:</label>
+          <input type="email" name="name" id="email" minlength="11" maxlength="50" required>
+        </div>
+        <div class="row">
+          <label for="">Ingresa tu dirección:</label>
+          <input type="text" name="name" id="direccion" minlength="4" maxlength="100" required>
+        </div>
         <input type="hidden" name="token_ws" value="<%= datos.token %>">
-        <input type="submit" value="Pagar">
+        <input type="submit" value="Pagar" onclick="guardarDatos()">
     </form>
+
     <footer class="bg-dark text-white pt-4 pb-2 mt-5">
         <div class="container">
             <div class="row">
@@ -113,22 +132,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
         crossorigin="anonymous"></script>
+    <script src="/Js/webpay.js">
+    </script>
     <script>
-        function action() {
-            var cont = document.getElementById("total");
-            var texto = "$";
-            var total = localStorage.getItem("total");
-            var miles = Math.floor(total/1000);
-            var cientos = total%1000;
-            if(miles!=0 && cientos!=0){
-                texto +=miles+"."+cientos;
-            }else if(cientos > 0 && miles==0){
-                texto += cientos;
-            }else if(miles!=0 && cientos==0){
-                texto += miles+".000";
-            }
-            cont.innerHTML = "Total a pagar: " + texto;
-        }
+      var orden = "<%=datos.buyOrder%>";
+      window.localStorage.setItem('orden',orden);
+      window.localStorage.setItem('token',"<%= datos.token %>");
+      console.log(localStorage.getItem('token'));
     </script>
 </body>
 </html>
