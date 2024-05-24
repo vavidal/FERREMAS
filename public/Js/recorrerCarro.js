@@ -3,11 +3,11 @@ function items(){
     $('#recorrer').empty();
     let cart = JSON.parse(localStorage.getItem("carrito"));
     let contador = 1;
-    cart.carro.forEach(producto => {
+    cart.carro.forEach(prod => {
         let resultado;
         let ruta;
         $.ajax({
-            url: `/busqueda/${producto}`, 
+            url: `/busqueda/${prod[0]}`, 
             method: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -53,7 +53,7 @@ function items(){
                         <i class="fas fa-minus"></i>
                       </button>
             
-                      <input type="number" id="cantidad" class="form-control form-control-sm cantidad" min="0" max="${producto.CANTIDAD}" name="quantity" value="1">
+                      <input type="number" id="cantidad" class="form-control form-control-sm cantidad" min="1" max="${producto.CANTIDAD}" name="quantity" value="${prod[1]}">
             
                       <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                         onclick="updateQuantity(this, 'increase')">

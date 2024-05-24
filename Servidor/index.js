@@ -152,6 +152,12 @@ app.get('/equipos_medicion', (req, res) => {
 
 app.post('/webpay', asyncHandler(async function (request, response) {
   const datos = request.body;
+  /*datos_tarjeta:{
+    num_tarjeta: 4051885600446623,
+    cvv: 123,
+    rut: 11111111-1,
+    clave: 123
+  }*/
   const {total} = datos;
   const Valor = total;
   let buyOrder = "O-" + Math.floor(Math.random() * 10000) + 1;

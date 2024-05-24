@@ -1,19 +1,17 @@
 // Buscar y almacenar referencias a elementos relevantes
 var itemCarrito = document.querySelector(".item-carrito");
 var precioTotalElement = document.getElementById("precio");
+let carrito = JSON.parse(localStorage.getItem('carrito'));
 var total = document.getElementById("total");
 // Agregar un solo controlador de eventos al contenedor del carrito
 itemCarrito.addEventListener('click', function(event) {
     var target = event.target;
+    var fila = target.closest('.fila-carrito');
+    var elemento = fila.querySelector('#aidi').value;
     if (target.classList.contains('eliminar')) {
-        //Eliminar de LocalStorage
-        var fila = target.closest('.fila-carrito');
-        var elemento = fila.querySelector('#aidi').value;
-        console.log(elemento);
         // Eliminar el elemento del localStorage
-        let carrito = JSON.parse(localStorage.getItem('carrito'));
         carrito.carro.forEach((element, index) => {
-            if (element == elemento) {
+            if (element[0] == elemento) {
                 carrito.carro.splice(index, 1);
                 //Guardar el arreglo sin el item en el LocalStorage
                 localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -34,6 +32,8 @@ itemCarrito.addEventListener('click', function(event) {
 // Función para actualizar la cantidad de un producto
 function updateQuantity(button, action) {
     var input = button.parentNode.querySelector('input[type=number]');
+    var fila = button.closest('.fila-carrito');
+    var elemento = fila.querySelector('#aidi').value;
     var currentValue = parseInt(input.value);
     
     // Escuchar el evento input para detectar cambios en la cantidad
@@ -52,6 +52,12 @@ function updateQuantity(button, action) {
         input.value = currentValue - 1;
     }
     actualizarTotalCarrito(); // Llama a la función para recalcular el total del carrito
+    carrito.carro.forEach(element=>{
+        if(element[0] == elemento){
+            element[1] = input.value;
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+        }
+    })
 }
 
 
@@ -90,4 +96,5 @@ function actualizarTotalCarrito(){
     }
     precioTotalElement.textContent = totalTexto;
     total.value = totalCarrito; // Actualiza el precio total del carrito
+    window.localStorage.setItem('total',totalCarrito);
 }

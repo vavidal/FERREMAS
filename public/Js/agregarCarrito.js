@@ -9,11 +9,17 @@ $(document).ready(function() {
 
 function aggCar(num) {
     let aidi = num;
+    let verificar = false;
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    if (carrito.carro.includes(aidi)) {
+    carrito.carro.forEach(element => {
+        if(element[0] == aidi){
+            verificar = true;
+        }
+    });
+    if (verificar) {
         alert("El elemento ya existe en el carrito");
     }else{
-        carrito.carro.push(aidi);
+        carrito.carro.push([aidi,1]);
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }
     console.log(carrito);
