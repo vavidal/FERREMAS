@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
-        <title> FERREMAS - Productos de Ferreteria y Construcción </title>
-        <link rel="stylesheet" type="text/css" href="index.ejs">
-        <link rel="stylesheet" href="/CSS/inicio.css">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
+    <title>FERREMAS - Productos de Ferreteria y Construcción</title>
+    <link rel="stylesheet" href="index.ejs">
+    <link rel="stylesheet" href="/CSS/inicio.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/CSS/custom.css">
+</head>
 <body onload="action()">
-  <!--ID DE LA BARRA DE NAVEGACIÓN-->
-  <div id="navbar-container"></div>
+    <!--ID DE LA BARRA DE NAVEGACIÓN-->
+    <div id="navbar-container"></div>
 
-    <h1>Pago Webpay</h1>
-    <p id="total"></p>
+    <div class="container mt-5">
+        <h1 class="text-center text-orange">Pago Webpay</h1>
+        <p id="total" class="text-center"></p>
 
-    <form action="<%= datos.url %>" method="post">
-        <div class="row">
-          <label for="">Ingresa tu nombre:</label>
-          <input type="text" name="name" id="nombre" minlength="4" maxlength="50" required>
-        </div>
-        <div class="row">
-          <label for="">Ingresa tu rut, sin puntos y sin guión:</label>
-          <input type="number" name="name" id="rut" min="1000000" max="24000000" required>
-        </div>
-        <div class="row">
-          <label for="">Ingresa tu email:</label>
-          <input type="email" name="name" id="email" minlength="11" maxlength="50" required>
-        </div>
-        <div class="row">
-          <label for="">Ingresa tu dirección:</label>
-          <input type="text" name="name" id="direccion" minlength="4" maxlength="100" required>
-        </div>
-        <input type="hidden" name="token_ws" value="<%= datos.token %>">
-        <input type="submit" value="Pagar" onclick="guardarDatos()">
-    </form>
+        <form action="<%= datos.url %>" method="post" class="bg-light p-5 rounded shadow">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Ingresa tu nombre:</label>
+                <input type="text" name="name" id="nombre" class="form-control" minlength="4" maxlength="50" required>
+            </div>
+            <div class="mb-3">
+                <label for="rut" class="form-label">Ingresa tu rut, sin puntos y sin guión:</label>
+                <input type="number" name="name" id="rut" class="form-control" min="1000000" max="24000000" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Ingresa tu email:</label>
+                <input type="email" name="name" id="email" class="form-control" minlength="11" maxlength="50" required>
+            </div>
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Ingresa tu dirección:</label>
+                <input type="text" name="name" id="direccion" class="form-control" minlength="4" maxlength="100" required>
+            </div>
+            <input type="hidden" name="token_ws" value="<%= datos.token %>">
+            <div class="text-center">
+                <input type="submit" value="Pagar" onclick="guardarDatos()" class="btn btn-orange mt-3">
+            </div>
+        </form>
+    </div>
 
     <footer class="bg-dark text-white pt-4 pb-2 mt-5">
         <div class="container">
@@ -77,19 +83,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-qNyK6D/H6fCdCBfQ6xFzDk9D9E9T3aHD6pZ5O7E5S2TlaFT5CVL3BpZZTg26B6aq"
         crossorigin="anonymous"></script>
-    <!--Para que funcionen los elementos de Bootstap-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-        crossorigin="anonymous"></script>
-    <script src="/Js/webpay.js">
-    </script>
+    <script src="/Js/webpay.js"></script>
     <script>
       var orden = "<%=datos.buyOrder%>";
       window.localStorage.setItem('orden',orden);
       window.localStorage.setItem('token',"<%= datos.token %>");
       console.log(localStorage.getItem('token'));
     </script>
-    <!--SCRIPT DE LA BARRA DE NAVEGACIÓN-->
+    <!--SCRIPT DE LA BARRA DE NAVEGACIÓN-->
     <script>
         fetch("/HTML/navbar.html")
         .then(response => response.text())
@@ -98,6 +99,6 @@
         })
         .catch(error => console.error('Error cargando el navbar:', error));
     </script>
-    <!--FIN SCRIPT DE LA BARRA DE NAVEGACIÓN-->
+    <!--FIN SCRIPT DE LA BARRA DE NAVEGACIÓN-->
 </body>
 </html>
