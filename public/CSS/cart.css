@@ -1,0 +1,43 @@
+/* custom.css */
+.bg-light-orange {
+    background-color: #FFE5B4;
+}
+
+.bg-light-orange-dark {
+    background-color: #FFCC99;
+}
+
+.text-orange {
+    color: #FF7F00;
+}
+
+.btn-orange {
+    background-color: #FF7F00;
+    border-color: #FF7F00;
+}
+
+.btn-orange:hover {
+    background-color: #e66a00;
+    border-color: #e66a00;
+}
+
+footer {
+    background-color: #333;
+}
+
+footer h5 {
+    color: #FF7F00;
+}
+
+footer a {
+    color: #FF7F00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #e66a00;
+}
+
+footer p {
+    color: #FFFFFF;
+}
