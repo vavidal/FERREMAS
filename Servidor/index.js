@@ -28,11 +28,10 @@ app.get('/inicio', (req, res) => {
   });
 });
 
-//Llamar a todos los productos
+//Llamar a todos los productos desde el inicio
 app.get('/', (req, res) => {
-  const num = req.query.num || 1;  
-  const query = 'CALL PRC_PRODS(?);';
-  mysqlConnection.query(query, [num], (error, results) => {
+  const query = 'CALL PRC_PROD();';
+  mysqlConnection.query(query, (error, results) => {
     if (error) {
       console.error('Error executing query:', error);
       res.status(500).send('Internal Server Error');
