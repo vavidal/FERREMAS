@@ -60,37 +60,7 @@
     </div>
   </div>
 
-  <footer class="bg-dark text-white pt-4 pb-2 mt-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <h5>Sobre Ferremas</h5>
-          <p>Ferremas, líderes en venta de herramientas y materiales de construcción. Fundada en 2000, nuestro
-            compromiso es ofrecer productos de calidad al mejor precio. Visítanos y encuentra todo lo que necesitas para
-            tus proyectos.</p>
-        </div>
-        <div class="col-md-4 mb-3">
-          <h5>Contacto</h5>
-          <ul class="list-unstyled">
-            <li>Teléfono: +569 1234 5678</li>
-            <li>Email: ventasweb@ferremas.cl</li>
-            <li>Dirección: Manuel Rodríguez 123, Santiago, Chile</li>
-          </ul>
-        </div>
-        <div class="col-md-4 mb-3">
-          <h5>Síguenos</h5>
-          <a href="#" class="text-white me-2" style="font-size: 24px;"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-white me-2" style="font-size: 24px;"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-white" style="font-size: 24px;"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-12 text-center">
-          <p>© 2024 Ferremas. Todos los derechos reservados.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <div id="footer-container"></div>
 
   <!-- Scripts necesarios -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -103,14 +73,7 @@
     integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
     crossorigin="anonymous"></script>
   <!--SCRIPT DE LA BARRA DE NAVEGACIÓN-->
-  <script>
-    fetch("/HTML/navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-      })
-      .catch(error => console.error('Error cargando el navbar:', error));
-  </script>
+  <script src="/Js/fetchNav.js"></script>
   <!--FIN SCRIPT DE LA BARRA DE NAVEGACIÓN-->
 </body>
 
