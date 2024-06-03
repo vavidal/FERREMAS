@@ -98,3 +98,19 @@ function actualizarTotalCarrito(){
     total.value = totalCarrito; // Actualiza el precio total del carrito
     window.localStorage.setItem('total',totalCarrito);
 }
+
+//Alerta si paga y el carrito está vacío.
+document.querySelector('form').addEventListener('submit', function (event) {
+    var total = document.getElementById('total').value;
+    if (total == 0) {
+        event.preventDefault();
+        Swal.fire({
+            icon: 'error',
+            title: 'Carrito vacío',
+            text: 'No hay productos en el carrito, añada productos para procesar el pago',
+            showConfirmButton: false,
+            timer: 4000
+        });
+    }
+});
+
