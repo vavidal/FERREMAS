@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/CSS/custom.css">
 </head>
+
 <body onload="action()">
     <!--ID DE LA BARRA DE NAVEGACIÓN-->
     <div id="navbar-container"></div>
@@ -38,7 +40,8 @@
             </div>
             <div class="mb-3">
                 <label for="direccion" class="form-label">Ingresa tu dirección:</label>
-                <input type="text" name="name" id="direccion" class="form-control" minlength="4" maxlength="100" required>
+                <input type="text" name="name" id="direccion" class="form-control" minlength="4" maxlength="100"
+                    required>
             </div>
             <input type="hidden" name="token_ws" value="<%= datos.token %>">
             <div class="text-center">
@@ -55,13 +58,14 @@
         crossorigin="anonymous"></script>
     <script src="/Js/webpay.js"></script>
     <script>
-      var orden = "<%=datos.buyOrder%>";
-      window.localStorage.setItem('orden',orden);
-      window.localStorage.setItem('token',"<%= datos.token %>");
-      console.log(localStorage.getItem('token'));
+        var orden = "<%=datos.buyOrder%>";
+        window.localStorage.setItem('orden', orden);
+        window.localStorage.setItem('token', "<%= datos.token %>");
+        console.log(localStorage.getItem('token'));
     </script>
     <!--SCRIPT DE LA BARRA DE NAVEGACIÓN-->
     <script src="/Js/fetchNav.js"></script>
     <!--FIN SCRIPT DE LA BARRA DE NAVEGACIÓN-->
 </body>
+
 </html>

@@ -74,32 +74,42 @@
         <img src="/Images/HerramientasManuales/<%= product.IMG %>" alt="Producto" class="img-fluid">
       </div>
       <div class="col-md-6">
-        <h1><%= product.NOM %></h1>
-        <p><%= product.DES %></p>
+        <h1>
+          <%= product.NOM %>
+        </h1>
+        <p>
+          <%= product.DES %>
+        </p>
         <span class="badge bg-secondary">STOCK: <%= product.STOCK %></span>
-        <p>MARCA: <%= product.MRC %></p>
-        <p>MODELO: <%= product.MDL %></p>
-        <p>ANCHO: <%= product.ANC %></p>
-        <p>ALTO: <%= product.ALT %></p>
-        <p>PESO: <%= product.PS %></p>
+        <p>MARCA: <%= product.MRC %>
+        </p>
+        <p>MODELO: <%= product.MDL %>
+        </p>
+        <p>ANCHO: <%= product.ANC %>
+        </p>
+        <p>ALTO: <%= product.ALT %>
+        </p>
+        <p>PESO: <%= product.PS %>
+        </p>
         <h3>
           <% if (Math.floor(product.VAL/1000)>0 && product.VAL%1000>0) { %>
             $<%= Math.floor(product.VAL/1000) %>.<%= product.VAL%1000 %> CLP
-          <% } else if ((Math.floor(product.VAL/1000)>0 && (product.VAL%1000)==0)) { %>
-            $<%= Math.floor(product.VAL/1000) %>.000 CLP
-          <% } else {%>
-            $<%= product.VAL%1000 %> CLP
-          <% } %>
+                <% } else if ((Math.floor(product.VAL/1000)>0 && (product.VAL%1000)==0)) { %>
+                  $<%= Math.floor(product.VAL/1000) %>.000 CLP
+                    <% } else {%>
+                      $<%= product.VAL%1000 %> CLP
+                        <% } %>
         </h3>
         <button class="btn btn-warning mt-2" onclick="aggCar(<%= product.NUMERITO %>)">Agregar al carrito</button>
       </div>
     </div>
   </div>
 
-  
-  <div id="footer-container"></div>
 
-  <!-- Scripts necesarios -->
+  <div id="footer-container"></div>
+  <!--SCRIPT PARA DESPLAZAR BOTON CATEGORÍAS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/Js/agregarCarrito.js"></script>
