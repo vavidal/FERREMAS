@@ -2,26 +2,35 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/CSS/inicio.css">
-  <title>Transacción Fallida</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/transaccion.css">
+    <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
+    <title>Transacción Fallida</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 </head>
 
 <body>
-  <div id="navbar-container"></div>
-  ¡Transacción Fallida!
+    <div id="navbar-container"></div>
+    <div class="container mt-5">
+      <div class="card">
+          <div class="card-header bg-danger text-white">
+              <h2 class="mb-0">¡Transacción Fallida!</h2>
+          </div>
+          <div class="card-body">
+              <p class="card-text"><strong>Token:</strong> <%= datos.viewData.token %></p>
+              <p class="card-text"><strong>Tipo:</strong> <%= datos.step %></p>
+              <p class="card-text"><strong>Descripción:</strong> <%= datos.stepDescription %></p>
+          </div>
+      </div>
+  </div>
 
-  Token: <%= datos.viewData.token %>
-    Tipo: <%= datos.step %>
-      Descripción: <%= datos.stepDescription %>
-        <div id="footer-container"></div>
-        <script src="/Js/fetchNav.js"></script>
+    <div id="footer-container"></div>
+    <script src="/Js/fetchNav.js"></script>
 </body>
 
 </html>

@@ -63,7 +63,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: 500%;
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -179,3 +179,5 @@ footer a:hover {
 footer p {
   color: #FFFFFF;
 }
+
+
