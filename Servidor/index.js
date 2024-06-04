@@ -61,40 +61,15 @@ app.get('/informacion_pedido',(req,res)=>{
 // Trae el producto con el id
 app.get('/producto/:id', (req, res) => {
   const productId = req.params.id;
-  const queries = [
-    'CALL PRC_PRODS(1);',
-    'CALL PRC_PRODS(2);',
-    'CALL PRC_PRODS(3);',
-    'CALL PRC_PRODS(4);',
-    'CALL PRC_PRODS(5);',
-    'CALL PRC_PRODS(6);'
-  ];
-  
-  let products = [];
-
-  const executeQuery = (queryIndex) => {
-    if (queryIndex >= queries.length) {
-      const product = products.find(tool => tool.NUMERITO == productId);
-      if (product) {
-        res.render('producto', { product });
-      } else {
-        res.status(404).send('Producto no encontrado');
-      }
+  const query = `CALL PRC_CART(${productId});`;
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
       return;
     }
-
-    mysqlConnection.query(queries[queryIndex], (error, results) => {
-      if (error) {
-        console.error('Error executing query:', error);
-        res.status(500).send('Internal Server Error');
-        return;
-      }
-      products = products.concat(results[0]);
-      executeQuery(queryIndex + 1);
-    });
-  };
-
-  executeQuery(0);
+    res.render('producto', { prod: results[0][0] });
+  });
 });
 
 
