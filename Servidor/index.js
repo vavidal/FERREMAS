@@ -30,7 +30,7 @@ app.get('/inicio', (req, res) => {
 
 //Llamar a todos los productos desde el inicio
 app.get('/', (req, res) => {
-  const query = 'CALL PRC_PROD();';
+  const query = 'CALL PRC_PRODS(1);';
   mysqlConnection.query(query, (error, results) => {
     if (error) {
       console.error('Error executing query:', error);
