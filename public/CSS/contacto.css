@@ -1,0 +1,90 @@
+/* Estilos personalizados */
+body {
+    background-color: #f9f9f9;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+h2, h3 {
+    color: #e66a00;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #e66a00;
+    border-color: #e66a00;
+}
+
+.btn-primary:hover {
+    background-color: #e66a00;
+    border-color: #e66a00;
+}
+
+.form-control {
+    background-color: white;
+}
+
+.form-control:focus {
+    background-color: #FFF8DC;
+    border-color: #e66a00;
+    box-shadow: none;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.card i {
+    color: #e66a00;
+    margin-right: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+footer {
+    background-color: #333;
+}
+
+footer h5 {
+    color: #FF7F00;
+}
+
+footer a {
+    color: #FF7F00;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #e66a00;
+}
+
+footer p {
+    color: #FFFFFF;
+}
+
+.navbar-nav .nav-link {
+    color: #DC661F;
+  }
+  
+  .navbar-nav .nav-link {
+    color: #DC661F
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 16px;
+  }

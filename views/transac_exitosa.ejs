@@ -15,16 +15,23 @@
 
 <body>
     <div id="navbar-container"></div>
-    ¡Transacción Exitosa!
-
-    Token: <%= datos.token %>
-        Commit Response: <%= datos.commitResponse.status %>
-            <div class="datos">
-                <p id="nombre"></p>
-                <p id="rut"></p>
-                <p id="direccion"></p>
-                <p id="mail"></p>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h2 class="mb-0">¡Transacción Exitosa!</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><strong>Token:</strong> <%= datos.token %></p>
+                    <p class="card-text"><strong>Commit Response:</strong> <%= datos.commitResponse.status %></p>
+                    <div class="datos">
+                        <p id="nombre"></p>
+                        <p id="rut"></p>
+                        <p id="direccion"></p>
+                        <p id="mail"></p>
+                    </div>
+                </div>
             </div>
+        </div>
 
             <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
             <script src="/Js/confirmar.js"></script>
