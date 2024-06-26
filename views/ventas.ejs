@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración Productos - FERREMAS</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/CSS/inicio.css">
+</head>
+<body>
+
+  <div class="row">
+    <div class="col-10" id="navbar-container"></div>
+    <div class="col-2" id="datos"></div>
+  </div>
+  <div class="row pt-4">
+    <label for="" class="form-label">¿Venta despachada, no despachada o todas?</label>
+    <select name="" id="despacho" class="form-select">
+      <option value="5">Todas</option>
+      <option value="1">Despachada</option>
+      <option value="0">No Despachada</option>
+    </select>
+    <button class="btn btn-primary" onclick="filtrar()">Ver ventas</button>
+  </div>
+
+    <div class="container d-flex text-center col-6 justify-content-center" style="padding-top: 2%; padding-bottom: 2%;" >
+      <table class="table border border-primary">
+        <thead>
+        <tr>
+            <th scope="col">Num Venta</th>
+            <th scope="col">Num Empleado</th>
+            <th scope="col">Nombre Empleado</th>
+            <th scope="col">Rut Cliente</th>
+            <th scope="col">Nombre Cliente</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Fecha de Venta</th>
+            <th scope="col">Ver Detalle de Venta</th>
+            <th scope="col">Ingresar Número de Seguimiento</th>
+        </tr>
+        </thead>
+        <tbody id="ventas">
+
+        </tbody>
+      </table>
+    </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Cambia el stock</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="contenido">
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+    <div id="footer-container"></div>
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/@popperjs/core/dist/umd/popper.js"></script>
+    <script src="/Js/fetchNav.js"></script>
+    <script src="/Js/ventas.js"></script>
+    <script src="/Js/stockProd.js"></script>
+    
+</body>
+</html>

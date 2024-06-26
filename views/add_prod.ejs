@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Servicio</title>
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-10" id="navbar-container"></div>
+    <div class="col-2" id="datos"></div>
+  </div>
+
+  <div class="container mt-4">
+    <form action="/valid_productos" method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-body">
+              <h2 class="card-title text-center">Formulario de Producto</h2>
+              <div class="mb-3">
+                <label for="tipoProducto" class="form-label">Producto:</label>
+                <select class="form-select" id="tipoProd" name="tipoProd">
+                  <option value="">Selecciona un Tipo de Producto:</option>
+                  <% tp_producto.forEach(tipo => { %>
+                    <option value="<%= tipo.ITP %>">
+                      <%= tipo.NOMBRE %>
+                    </option>
+                  <% }); %>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Nombre del Producto:</label>
+                <input type="text" class="form-control" id="nombreProd" minlength="5" name="nombreProd" required>
+              </div>
+              <div class="mb-3">
+                <label  class="form-label">Stock:</label>
+                <input type="number" min="1" class="form-control" id="stockProd" name="stockProd" required>
+              </div>
+      
+              <div class="mb-3">
+                <label class="form-label">Costo del Producto:</label>
+                <input type="number" min="100" class="form-control" id="costoProducto" name="costoProducto" required>
+              </div>
+              <div class="mb-3">
+                <label  class="form-label">Valor venta del Producto:</label>
+                <input type="number" min="100" class="form-control" id="ventaProducto" name="ventaProducto" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Descripción del Producto:</label>
+                <textarea class="form-control" id="descripcion" name="descripcion" rows="4" minlength="20" placeholder="Describe el producto aquí. Mínimo 20 caracteres." required></textarea>
+            </div>
+              <div class="mb-3">
+                <label class="form-label">Subir Imagen:</label>
+                <input type="file" class="form-control" name="file" />
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+          </div>
+    </form>
+  </div>
+   
+  <div id="footer-container"></div>
+ 
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/@popperjs/core/dist/umd/popper.js"></script>
+  <script src="/Js/validacionIngresoEdit.js"></script>
+  <!--SCRIPT DE LA BARRA DE NAVEGACIÓN-->
+  <script src="/Js/fetchNav.js"></script>
+  <!--SCRIPT PARA ALERTA SI ESTÁ VACÍO EL CARRITO-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

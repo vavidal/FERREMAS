@@ -22,19 +22,7 @@ function items(){
                     }else{
                         resultado+=(producto.VAL%1000).toString();
                     }
-                    if(producto.ITP == 1){
-                        ruta = "/Images/HerramientasManuales/"+producto.IMG;
-                    }else if (producto.ITP == 2){
-                        ruta = "/Images/MaterialesBasicos/"+producto.IMG;
-                    }else if (producto.ITP == 3){
-                        ruta = "/Images/EquiposSeguridad/"+producto.IMG;
-                    }else if (producto.ITP == 4){
-                        ruta = "/Images/TornillosyAnclajes/"+producto.IMG;
-                    }else if (producto.ITP == 5){
-                        ruta = "/Images/FijacionesAdhesivos/"+producto.IMG;
-                    }else if (producto.ITP == 6){
-                        ruta = "/Images/EquiposMedicion/"+producto.IMG;
-                    }
+                    ruta = "/Images/Productos/"+producto.IMG;
 
                     $('#recorrer').append(`
                     <div class="row mb-4 d-flex justify-content-between align-items-center fila-carrito">
