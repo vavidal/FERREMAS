@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/jpeg" href="/Images/Logo Ferremas.png">
+  <title> FERREMAS - Productos de Ferreteria y Construcción </title>
+  <link rel="stylesheet" type="text/css" href="index.ejs">
+  <link rel="stylesheet" href="/CSS/inicio.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+
+<body>
+  <!--ID DE LA BARRA DE NAVEGACIÓN-->
+  <div id="navbar-container"></div>
+
+  <div class="container py-4">
+    <div class="row">
+      <% tools.forEach(tool=> { %>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100 d-flex flex-column" style="cursor: pointer;"
+            onclick="location.href='/producto/<%= tool.NUMERITO %>'">
+            <img class="card-img-top mb-2" src="/Images/equiposseguridad/<%= tool.IMG %>" alt="Herramienta"
+              style="height: 150px; object-fit: contain;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title mb-2">
+                <% if (Math.floor(tool.VAL/1000)>0 && tool.VAL%1000>0) { %>
+                  <%= tool.NOM %> - $<%= Math.floor(tool.VAL/1000) %>.<%= tool.VAL%1000 %> CLP
+                        <% } else if ((Math.floor(tool.VAL/1000)>0 && (tool.VAL%1000)==0)) { %>
+                          <%= tool.NOM %> - $<%= Math.floor(tool.VAL/1000) %>.000 CLP
+                              <% } else {%>
+                                <%= tool.NOM %> - $<%= tool.VAL%1000 %> CLP
+                                    <% } %>
+              </h5>
+              <p class="card-text flex-grow-1">
+                <%= tool.DES %>
+              </p>
+              <button class="btn btn-warning mt-2"
+                onclick="event.stopPropagation(); aggCar(<%= tool.NUMERITO %>);">Agregar al carrito</button>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+    </div>
+  </div>
+  <!--SCRIPT PARA DESPLAZAR BOTON CATEGORÍAS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/Js/agregarCarrito.js"></script>
+  <div id="footer-container"></div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qNyK6D/H6fCdCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
+  <!--SCRIPT DE LA BARRA DE NAVEGACIÓN-->
+  <script src="/Js/fetchNav.js"></script>
+  <!--SCRIPT PARA ALERTA SI ESTÁ VACÍO EL CARRITO-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

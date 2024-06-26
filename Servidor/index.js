@@ -1,7 +1,4 @@
 const express = require('express');
-const session = require('express-session');
-const flash = require('express-flash');
-const multer = require('multer');
 const WebpayPlus = require("transbank-sdk").WebpayPlus;
 const asyncHandler = require("../Servidor/async_handler");
 WebpayPlus.configureForTesting();
@@ -16,26 +13,8 @@ const port = 3010;
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
-app.use('/node_modules', express.static(path.join(__dirname,'..', 'node_modules')));
 app.use(bp.json());
-app.use(bp.urlencoded({ extended: false }));
-
-
-app.use(session({
-  secret: 'funcionara?', 
-  resave: false,
-  saveUninitialized: false
-}));
-
-app.use(flash());
-
-const storage = multer.diskStorage({
-  destination: 'public/Images/Productos',
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  }
-});
-const upload = multer({ storage:storage, limits: { fieldSize: 25 * 1024 * 1024 } })
+app.use(bp.urlencoded({ extended: true }));
 
 app.get('/inicio', (req, res) => {
   const query = 'CALL PRC_EMPLEADO();';  
@@ -48,6 +27,7 @@ app.get('/inicio', (req, res) => {
     res.render('index', { users: results[0] });
   });
 });
+
 //Llamar a todos los productos desde el inicio
 app.get('/', (req, res) => {
   const query = 'CALL PRC_PRODS(1);';
@@ -61,172 +41,9 @@ app.get('/', (req, res) => {
   });
 });
 
+
 app.get('/contacto',(req,res)=>{
   res.render('contacto')
-});
-
-app.get('/admin',(req,res)=>{
-  const query = `CALL PRC_ADMIN();`;
-  mysqlConnection.query(query, (error, results) => {
-    if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).send('Internal Server Error');
-      return;
-    }
-    res.render('admin', { prods: results[0] });
-  });
-});
-
-app.get('/admin/agregar',(req,res)=>{
-  const query = 'CALL TP_PRODS()';
-  mysqlConnection.query(query, (error, results) => {
-    if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).send('Internal Server Error');
-      return;
-    }
-    res.render('add_prod', { tp_producto: results[0] });
-  });
-});
-
-app.post('/valid_productos', upload.single('file'),(req, res)=> {
- const {
-      tipoProd,
-      nombreProd,
-      stockProd,
-      costoProducto,
-      ventaProducto,
-      descripcion
-    } = req.body;
-  
-    // Check for required fields first
-    if (!tipoProd || !nombreProd || !stockProd || !costoProducto || !ventaProducto || !descripcion || !req.file) {
-      return res.status(400).send('Todos los campos son obligatorios.');
-    }
-    const imagen = req.file.filename;
-    const registrar = `CALL PRC_INS_PRODUCTO(?, ?, ?, ?, ?, ?, ?)`;
-    mysqlConnection.query(
-      registrar,
-      [
-        tipoProd,
-        nombreProd,
-        stockProd,
-        costoProducto,
-        ventaProducto,
-        descripcion,
-        imagen
-      ],
-      function (error) {
-        if (error) {
-          console.error(error);
-          return res.status(500).send('Error al almacenar los datos del producto.');
-        } else {
-          console.log('Datos del producto almacenados correctamente');
-          return res.redirect('/admin');
-        }
-      }
-    );
-});
-
-app.get('/admin/editar/:id', (req, res) => {
-  const id_prod = req.params.id;
-  const query = `CALL PRC_PROD_EDI(${id_prod});`;
-  mysqlConnection.query(query, (error, results) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send('Error al obtener los datos del proyecto');
-    } else {
-      const prod = results[0][0];
-      if (prod) {
-        const query = 'CALL TP_PRODS()';
-        mysqlConnection.query(query, (error, results) => {
-          if (error) {
-            console.error('Error executing query:', error);
-            res.status(500).send('Internal Server Error');
-            return;
-          }
-        res.render('edi_prod', { prod, tp_producto: results[0] });
-        });   
-      } else {
-        res.status(404).send('El producto no existe');
-      }
-    }
-  });
-});
-
-app.post('/borrar/:id', (req, res) => {
-  const id_prod = req.params.id;
-  const query = `CALL PRC_ELI_PROD(?)`;
-  mysqlConnection.query(query, [id_prod], (error, results) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send('Error al eliminar el producto');
-    } else {
-      const mensaje = results[0][0].mensaje;
-      if (mensaje === 'Producto eliminado correctamente') {
-        console.log('Producto eliminado correctamente');
-        res.redirect('/admin');
-      } else {
-        console.log('El Producto no existe');
-        res.status(404).send('El Producto no existe');
-      }
-    }
-  });
-});
-
-app.post('/admin/editar/prod/:id', upload.single('file'), (req, res) => {
-  const id_prod = req.params.id;
-  const {
-    tipoProd,
-    nombreProd,
-    stockProd,
-    costoProducto,
-    ventaProducto,
-    descripcion
-  } = req.body;
-
-
-  const imageName = req.file ? req.file.filename : null;
-  var query;
-  var elements;
-
-  if(imageName == null){
-    query = `CALL PRC_UPD_SINIMG(?,?,?,?,?,?)`;
-    elements= [id_prod, nombreProd, stockProd, costoProducto, ventaProducto, descripcion];
-    
-  }else{
-    query = `CALL PRC_UPD_CONIMG(?,?,?,?,?,?,?,?)`;
-    elements= [id_prod, tipoProd, nombreProd, stockProd, costoProducto, ventaProducto, descripcion,imageName];
-  }
-
-  mysqlConnection.query(
-    query,
-    elements,
-    (error) => {
-      if (error) {
-        console.error(error);
-        res.status(500).send('Error al actualizar el producto');
-      } else {
-        console.log('Producto actualizado correctamente');
-        res.redirect('/admin');
-      }
-    }
-  );
-});
-
-app.post('/stock/:id', (req, res) => {
-  const id_prod = req.params.id;
-  const {stockId} = req.body;
-  const query = `CALL PRC_UPD_STOCK(?,?)`;
-  mysqlConnection.query( query, [id_prod,stockId], (error, results) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send('Error al actualizar el stock');
-    } else {
-      console.log('Stock actualizado correctamente');
-      res.redirect('/admin');
-    }
-  });
 });
 
 app.get('/blog',(req,res)=>{
@@ -244,7 +61,7 @@ app.get('/informacion_pedido',(req,res)=>{
 // Trae el producto con el id
 app.get('/producto/:id', (req, res) => {
   const productId = req.params.id;
-  const query = `CALL PRC_VER_PROD(${productId});`;
+  const query = `CALL PRC_CART(${productId});`;
   mysqlConnection.query(query, (error, results) => {
     if (error) {
       console.error('Error executing query:', error);
@@ -255,6 +72,7 @@ app.get('/producto/:id', (req, res) => {
   });
 });
 
+
 app.get('/herramientas_manuales', (req, res) => {
   const query = 'CALL PRC_PRODS(1);';  
   mysqlConnection.query(query, (error, results) => {
@@ -263,7 +81,7 @@ app.get('/herramientas_manuales', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    res.render('productos', { tools: results[0] });
+    res.render('herramientasmanuales', { tools: results[0] });
   });
 });
 
@@ -275,7 +93,7 @@ app.get('/materiales_basicos', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    res.render('productos', { tools: results[0] });
+    res.render('materialesbasicos', { tools: results[0] });
   });
 });
 
@@ -287,7 +105,7 @@ app.get('/equipos_seguridad', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    res.render('productos', { tools: results[0] });
+    res.render('equiposseguridad', { tools: results[0] });
   });
 });
 
@@ -299,7 +117,7 @@ app.get('/tornillos_anclajes', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    res.render('productos', { tools: results[0] });
+    res.render('tornillosanclajes', { tools: results[0] });
   });
 });
 
@@ -311,31 +129,8 @@ app.get('/fijaciones_adhesivos', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    res.render('productos', { tools: results[0] });
+    res.render('fijacionesadhesivos', { tools: results[0] });
   });
-});
-
-app.get('/login', (req, res) => {
-  const errorMessage = req.flash('error');
-  res.render('login', { error: errorMessage });
-});
-
-app.post('/inicio_sesion', (req, res) => {
-  const { user, passw } = req.body;
-  const query = 'CALL PRC_LOGIN(?, ?);';
-  mysqlConnection.query(query, [user, passw], (error, results) => {
-    if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).send('Internal Server Error');
-      return;
-    }
-    if (results[0].length > 0) {
-      res.render('sesion_iniciada', { users: results[0] });
-    } else {
-      req.flash('error', 'Usuario o contraseña inválida. Intenta de nuevo.');
-      res.redirect('/login');
-    }
-  }); 
 });
 
 app.get('/equipos_medicion', (req, res) => {
@@ -346,31 +141,7 @@ app.get('/equipos_medicion', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    res.render('productos', { tools: results[0] });
-  });
-});
-
-app.get('/sales',(req,res)=>{
-  res.render('ventas');
-});
-
-app.get('/filtrar_ventas',(req,res)=>{
-  const despacho = req.query.data;
-  var query="Hola";
-  if(despacho==5){
-    query = `CALL PRC_VER_VENTAS_TODO();`;
-  }else if(despacho==0){
-    query = `CALL PRC_VER_VENTAS(0);`;
-  }else if(despacho==1){
-    query = `CALL PRC_VER_VENTAS(1);`;
-  }
-  mysqlConnection.query(query, (error, results) => {
-    if (error) {
-      console.error('Error executing query:', error);
-      res.status(500).send('Internal Server Error');
-      return;
-    }
-    res.json(results[0]);
+    res.render('equiposmedicion', { tools: results[0] });
   });
 });
 
@@ -441,8 +212,7 @@ app.get('/resultado', asyncHandler(async function (req, res) {
     if (commitResponse.status == "AUTHORIZED") {
       step = "El pago fue exitoso.";
       stepDescription = "El pago fue exitoso. Gracias por su compra.";
-      req.session.datos = viewData;
-      res.redirect('/compra_exitosa');
+      res.render("transac_exitosa", {datos : viewData});
       return;
     }else{
       step = "El pago fue rechazado.";
@@ -461,19 +231,8 @@ app.get('/resultado', asyncHandler(async function (req, res) {
     step = "El pago es inválido.";
     stepDescription = "El pago no fue procesado. Por favor, intenta nuevamente.";
   }
-  req.session.fallo = {step, stepDescription}
-  res.redirect("/compra_fallida");
+  res.render("transac_fallida", {datos: {step, stepDescription, viewData} });
 }));
-
-app.get('/compra_exitosa', (req, res) => {
-  const datos = req.session.datos;
-  res.render('transac_exitosa', {datos});
-});
-
-app.get('/compra_fallida', (req, res) => {
-  const fallo = req.session.fallo;
-  res.render('transac_fallida', {fallo});
-});
 
 app.post('/finalizar_venta',(req,res)=>{
   const datos = req.body.datos;
@@ -482,11 +241,8 @@ app.post('/finalizar_venta',(req,res)=>{
 
   const total = datos.total;
   const cliente = datos.cliente;
-  const vendedor = datos.vendedor;
 
-  req.session.datos = null;
-
-  const venta = `CALL PRC_VENTA('${cliente.nombre}','${cliente.email}','${cliente.direccion}',${cliente.rut},${total},'${token}',${vendedor});`;
+  const venta = `CALL PRC_VENTA('${cliente.nombre}','${cliente.email}','${cliente.direccion}',${cliente.rut},${total},'${token}');`;
   mysqlConnection.query(venta);
   carrito.forEach(element=>{
     const query = `CALL PRC_AGG_DET_PED(${element[0]},${element[1]});`;  
@@ -512,5 +268,5 @@ app.get('/busqueda/:id', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is listening at http://localhost:${port}/`);
-}); 
+    console.log(`Server is listening at http://localhost:${port}/inicio`);
+  }); 
