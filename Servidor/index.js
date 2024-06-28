@@ -12,11 +12,12 @@ const mysqlConnection = require('../Servidor/mysql');
 const { redirect } = require('express/lib/response');
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
+require("dotenv").config();
 
-const CLIENT_ID = '259390160006-hcar2if74jvmdjivpit62pr8vpadra0r.apps.googleusercontent.com';
-const CLIENT_SECRET = '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';
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = "1//0486aj2A62E_ZCgYIARAAGAQSNwF-L9IrreD000CiSWQ7Of8Ap4Eye-z2nthock5wVpl18WFZAznaa8tilGP0DWgSmwitFDZtasI";
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
