@@ -23,7 +23,7 @@
     <button class="btn btn-primary" onclick="filtrar()">Ver ventas</button>
   </div>
 
-    <div class="container d-flex text-center col-6 justify-content-center" style="padding-top: 2%; padding-bottom: 2%;" >
+    <div class="container d-flex text-center col-9 justify-content-center" style="padding-top: 2%; padding-bottom: 2%;" >
       <table class="table border border-primary">
         <thead>
         <tr>
@@ -34,6 +34,7 @@
             <th scope="col">Nombre Cliente</th>
             <th scope="col">E-mail</th>
             <th scope="col">Fecha de Venta</th>
+            <th scope="col">¿Despachada?</th>
             <th scope="col">Ver Detalle de Venta</th>
             <th scope="col">Ingresar Número de Seguimiento</th>
         </tr>
@@ -43,18 +44,59 @@
         </tbody>
       </table>
     </div>
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Cambia el stock</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="contenido">
+    
+  <div class="modal fade" id="detalleVenta" tabindex="-1" aria-labelledby="verDetVen" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="detventa modal-title fs-5" id="verDetVen"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="tituloTotal">
+          <div class="container d-flex text-center col-6 justify-content-center" style="padding-top: 2%; padding-bottom: 2%;" >
+            <table class="table border border-primary">
+              <thead>
+                <tr>
+                    <th scope="col">SKU Producto</th>
+                    <th scope="col">Nombre Producto</th>
+                    <th scope="col">Cantidad Comprada</th>
+                    <th scope="col">Valor Individual</th>
+                    <th scope="col">Valor Total</th>
+                </tr>
+              </thead>
+              <tbody id="contDetVen">
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="numSeguimiento" tabindex="-1" aria-labelledby="intNumSeg" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="numseg modal-title fs-5" id="intNumSeg"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="contNumSeg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="verSeguimiento" tabindex="-1" aria-labelledby="intVerSeg" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="verseg modal-title fs-5" id="intVerSeg"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="contVerSeg">
+        </div>
+      </div>
+    </div>
   </div>
   
 
@@ -65,7 +107,7 @@
     <script src="/node_modules/@popperjs/core/dist/umd/popper.js"></script>
     <script src="/Js/fetchNav.js"></script>
     <script src="/Js/ventas.js"></script>
-    <script src="/Js/stockProd.js"></script>
+    <script src="/Js/modalesVentas.js"></script>
     
 </body>
 </html>

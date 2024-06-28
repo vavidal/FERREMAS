@@ -10,6 +10,20 @@ const path = require('path');
 const mysqlConnection = require('../Servidor/mysql');
 /*const webpay = require('../Servidor/transbank');              WEBPAY*/
 const { redirect } = require('express/lib/response');
+const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
+
+const CLIENT_ID = '259390160006-hcar2if74jvmdjivpit62pr8vpadra0r.apps.googleusercontent.com';
+const CLIENT_SECRET = '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';
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+const REFRESH_TOKEN = "1//0486aj2A62E_ZCgYIARAAGAQSNwF-L9IrreD000CiSWQ7Of8Ap4Eye-z2nthock5wVpl18WFZAznaa8tilGP0DWgSmwitFDZtasI";
+
+const oAuth2Client = new google.auth.OAuth2(
+  CLIENT_ID,
+  CLIENT_SECRET,
+  REDIRECT_URI
+);
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 const app = express();
 const port = 3010;
@@ -19,7 +33,6 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/node_modules', express.static(path.join(__dirname,'..', 'node_modules')));
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: false }));
-
 
 app.use(session({
   secret: 'funcionara?', 
@@ -48,7 +61,7 @@ app.get('/inicio', (req, res) => {
     res.render('index', { users: results[0] });
   });
 });
-//Llamar a todos los productos desde el inicio
+
 app.get('/', (req, res) => {
   const query = 'CALL PRC_PRODS(1);';
   mysqlConnection.query(query, (error, results) => {
@@ -229,6 +242,66 @@ app.post('/stock/:id', (req, res) => {
   });
 });
 
+app.post('/numSeguimiento/:id', asyncHandler(async function (req, res) {
+  const id_venta = req.params.id;
+  const {numSeg,email} = req.body;
+  const query = `CALL PRC_NUM_SEG(?,?)`;
+  mysqlConnection.query( query, [id_venta,numSeg], (error, results) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send('Error al actualizar el stock');
+    } else {
+      console.log('Número de seguimiento almacenado correctamente.');
+    }
+  });
+  try {
+    const html = `
+    <h1>¡MUCHAS GRACIAS POR TU COMPRA!</h1>
+    <h2>La empresa encargada del envío es ChileExpress, y el número de seguimiento es: ${numSeg}. ¡Gracias por preferirnos!.</h2>`;
+    
+    const accessToken = await oAuth2Client.getAccessToken();
+
+    const transport = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: 'ferremasg9@gmail.com',
+        clientId: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
+        refreshToken: REFRESH_TOKEN,
+        accessToken: accessToken,
+      },
+    });
+
+    const mailOptions = {
+      from: 'FERREMAS - MÁS FERRETERÍA <ferremasg9@gmail.com>',
+      to: email,
+      subject: '¡MUCHAS GRACIAS POR TU COMPRA - SEGUIMIENTO!',
+      text: '¡MUCHAS GRACIAS POR TU COMPRA - SEGUIMIENTO!',
+      html: html,
+    };
+
+    const result = await transport.sendMail(mailOptions);
+    console.log("Mail enviado");
+    res.redirect("/sales");
+  } catch (error) {
+    console.error('Error enviando el correo:', error);
+  }
+}));
+
+app.get('/ver_seguimiento',(req,res)=>{
+  const data = req.query.data;
+  const query = `CALL PRC_VER_SEG(${data})`;
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.json(results[0][0]);
+  });
+});
+
 app.get('/blog',(req,res)=>{
   res.render('blog')
 });
@@ -241,7 +314,6 @@ app.get('/informacion_pedido',(req,res)=>{
   res.render('informacion_pedido')
 });
 
-// Trae el producto con el id
 app.get('/producto/:id', (req, res) => {
   const productId = req.params.id;
   const query = `CALL PRC_VER_PROD(${productId});`;
@@ -475,24 +547,83 @@ app.get('/compra_fallida', (req, res) => {
   res.render('transac_fallida', {fallo});
 });
 
-app.post('/finalizar_venta',(req,res)=>{
+app.post('/finalizar_venta', asyncHandler(async function (req,res){
+  /*Datos de la compra*/
   const datos = req.body.datos;
   const carrito = req.body.carrito.carro;
   const token = req.body.token;
-
   const total = datos.total;
   const cliente = datos.cliente;
   const vendedor = datos.vendedor;
 
-  req.session.datos = null;
+  const finalizacion = {
+    carro: carrito, 
+    email: cliente.email
+  };
+  req.session.finalizar = finalizacion;
+  try{
+    const venta = `CALL PRC_VENTA('${cliente.nombre}','${cliente.email}','${cliente.direccion}',${cliente.rut},${total},'${token}',${vendedor});`;
+    mysqlConnection.query(venta);
+    carrito.forEach(element=>{
+      const query = `CALL PRC_AGG_DET_PED(${element[0]},${element[1]});`;  
+      mysqlConnection.query(query);    
+    });
+    res.send("Funciona");
+  } catch (error) {
+    console.log(error);
+  }
+}));
 
-  const venta = `CALL PRC_VENTA('${cliente.nombre}','${cliente.email}','${cliente.direccion}',${cliente.rut},${total},'${token}',${vendedor});`;
-  mysqlConnection.query(venta);
-  carrito.forEach(element=>{
-    const query = `CALL PRC_AGG_DET_PED(${element[0]},${element[1]});`;  
-    mysqlConnection.query(query);
+app.get('/paso-1', (req, res) => {
+  const datos = req.query.datita;
+  const query = `CALL PRC_DET(${datos[0]},${datos[1]});`;
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.json(results[0]);
   });
 });
+
+app.get('/enviar_correo', asyncHandler(async function (req, res) {
+  try {
+    const email = req.query.email;
+    const html = req.query.html;
+    const total = req.query.total;
+    
+    const accessToken = await oAuth2Client.getAccessToken();
+
+    const transport = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: 'ferremasg9@gmail.com',
+        clientId: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
+        refreshToken: REFRESH_TOKEN,
+        accessToken: accessToken,
+      },
+    });
+
+    const mailOptions = {
+      from: 'FERREMAS - MÁS FERRETERÍA <ferremasg9@gmail.com>',
+      to: email,
+      subject: '¡MUCHAS GRACIAS POR TU COMPRA!',
+      text: '¡MUCHAS GRACIAS POR TU COMPRA!',
+      html: `<h1>¡MUCHAS GRACIAS POR PREFERIRNOS!</h1>
+        <h2>En unos días más, te enviaremos un nuevo correo, indicando el número de seguimiento y la empresa responsable de tu envío.</h2>
+        <h3>A continuación, se detalla tu compra:</h3>`+html+`
+        <h4>El total de tu compra es de: ${total}</h4>`,
+    };
+
+    const result = await transport.sendMail(mailOptions);
+    res.send("¡Correo enviado!");
+  } catch (error) {
+    console.error('Error enviando el correo:', error);
+  }
+}));
 
 app.get('/carrito',(req,res)=>{
   res.render('cart');
@@ -501,6 +632,19 @@ app.get('/carrito',(req,res)=>{
 app.get('/busqueda/:id', (req, res) => {
   const id = req.params.id;
   const query = `CALL PRC_CART(${id});`;  
+  mysqlConnection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.json(results[0]);
+  });
+});
+
+app.get('/detalle_venta', (req, res) => {
+  const id = req.query.data;
+  const query = `CALL PRC_DET_VENTA(${id});`;
   mysqlConnection.query(query, (error, results) => {
     if (error) {
       console.error('Error executing query:', error);

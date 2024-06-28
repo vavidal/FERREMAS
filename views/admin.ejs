@@ -56,7 +56,7 @@
                     </form>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="<%= prod.NUMERITO %>">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#stock" data-bs-whatever="<%= prod.NUMERITO %>">
                       Cambiar Stock
                     </button>
                   </td>
@@ -66,11 +66,11 @@
       </table>
     </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="stock" tabindex="-1" aria-labelledby="stockModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Cambia el stock</h1>
+        <h1 class="modal-title fs-5 hola" id="stockModal">Cambia el stock</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="contenido">
@@ -79,7 +79,6 @@
   </div>
   </div>
   
-
     <div id="footer-container"></div>
 
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>

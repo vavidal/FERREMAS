@@ -19,13 +19,14 @@ function filtrar(){
                                 <td>${venta.CLINAME}</td>
                                 <td>${venta.EMAIL}</td>
                                 <td>${venta.FECHA}</td>
+                                <td>No Despachada</td>
                                 <td>
-                                    <form action="#" method="post">
-                                        <button type="submit" class="btn btn-danger" disabled> Ver Detalle de Venta</button>
-                                    </form>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detalleVenta" data-bs-whatever="${venta.NUMBOLETA}">
+                                        Ver Detalle de Venta
+                                    </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="" disabled>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#numSeguimiento" data-bs-whatever="${venta.NUMBOLETA}" data-bs-email="${venta.EMAIL}">
                                         Despacha la Venta
                                     </button>
                                 </td>
@@ -41,14 +42,20 @@ function filtrar(){
                                 <td>${venta.CLINAME}</td>
                                 <td>${venta.EMAIL}</td>
                                 <td>${venta.FECHA}</td>
+                                <td>Despachada</td>
                                 <td>
-                                    <form action="#" method="post">
-                                        <button type="submit" class="btn btn-danger" disabled> Ver Detalle de Venta</button>
-                                    </form>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detalleVenta" data-bs-whatever="${venta.NUMBOLETA}" >
+                                        Ver Detalle de Venta
+                                    </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="" disabled>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#numSeguimiento" data-bs-whatever="${venta.NUMBOLETA}" data-bs-email="${venta.EMAIL}" >
                                         Despacha la Venta
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#verSeguimiento" data-bs-whatever="${venta.NUMBOLETA}">
+                                        Ver número de seguimiento
                                     </button>
                                 </td>
                             </tr>

@@ -22,25 +22,29 @@
                 <div class="card-header bg-success text-white">
                     <h2 class="mb-0">¡Transacción Exitosa!</h2>
                 </div>
-                <div class="card-body">
-                    <p class="card-text"><strong>Token:</strong> <%= datos.token %></p>
-                    <p class="card-text"><strong>Commit Response:</strong> <%= datos.commitResponse.status %></p>
-                    <div class="datos">
-                        <p id="nombre"></p>
-                        <p id="rut"></p>
-                        <p id="direccion"></p>
-                        <p id="mail"></p>
-                    </div>
+                <div class="card-body" id="insTabla">
+                    <div class="container d-flex text-center col-6 justify-content-center" style="padding-top: 2%; padding-bottom: 2%;">
+                        <table class="table border border-primary">
+                            <thead>
+                                <tr>
+                                    <th scope="col">SKU Producto</th>
+                                    <th scope="col">Nombre Producto</th>
+                                    <th scope="col">Cantidad Comprada</th>
+                                    <th scope="col">Valor Individual</th>
+                                    <th scope="col">Valor Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="elementos">
+                            </tbody>
+                        </table>
+                </div>
                 </div>
             </div>
         </div>
         <div id="footer-container"></div>
         
         <script src="/Js/confirmar.js"></script>
-        <script>
-            var token = "<%= datos.token %>";
-            window.localStorage.setItem('token', token);
-        </script>
+        
         <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="/node_modules/jquery/dist/jquery.js"></script>
         <script src="/node_modules/@popperjs/core/dist/umd/popper.js"></script>

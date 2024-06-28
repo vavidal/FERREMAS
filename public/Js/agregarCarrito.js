@@ -1,11 +1,13 @@
-$(document).ready(function() {
+try{
     const carrito = window.localStorage.getItem("carrito");
     if(carrito == null){
         let carrito = {carro:[]};
         window.localStorage.setItem("carrito", JSON.stringify(carrito));
         console.log("Se ha creado el carrito");
     }
-});
+}catch(error){
+}
+
 
 function aggCar(num) {
     let aidi = num;
