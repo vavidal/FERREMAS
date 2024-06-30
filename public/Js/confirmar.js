@@ -1,5 +1,4 @@
 function carr(car) {
-    console.log('Entering carr function');
     return Promise.all(car.map(item => {
         return new Promise((resolve, reject) => {
             console.log('Making AJAX request for item:', item);
@@ -24,7 +23,6 @@ function carr(car) {
 }
 
 function fin(datos, carrito, token) {
-    console.log('Entering fin function');
     return new Promise((resolve, reject) => {
         $.ajax({
             url: '/finalizar_venta',
