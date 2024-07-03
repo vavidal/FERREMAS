@@ -89,13 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(() => {
             console.log('Venta finalizada. Revisa tu correo para más información.');
             window.localStorage.clear();
+            if (data != null) {
+                localStorage.setItem("isLogged", "true");
+                localStorage.setItem("userData", JSON.stringify(data));
+            }
         })
         .catch(error => {
             console.error('Error in process:', error);
         });
-
-    if (data != null) {
-        localStorage.setItem("isLogged", "true");
-        localStorage.setItem("userData", JSON.stringify(data));
-    }
 });
