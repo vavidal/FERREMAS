@@ -46,6 +46,10 @@ if (login == "true") {
     .then(response => response.text())
     .then(data => {
         document.getElementById('navbar-container').innerHTML = data;
+        var carrito = JSON.parse(localStorage.getItem("carrito"));
+        carrito = carrito.carro;
+        const prods = carrito.length;
+        document.getElementById('cantidadCarro').innerHTML = prods;
     })
     .catch(error => console.error('Error cargando el navbar:', error));
 }
