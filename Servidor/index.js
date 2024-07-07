@@ -168,7 +168,7 @@ app.get('/admin/editar/:id', (req, res) => {
   });
 });
 
-app.post('/borrar/:id', (req, res) => {
+app.post('/deshabilitar/:id', (req, res) => {
   const id_prod = req.params.id;
   const query = `CALL PRC_ELI_PROD(?)`;
   mysqlConnection.query(query, [id_prod], (error, results) => {
@@ -177,8 +177,28 @@ app.post('/borrar/:id', (req, res) => {
       res.status(500).send('Error al eliminar el producto');
     } else {
       const mensaje = results[0][0].mensaje;
-      if (mensaje === 'Producto eliminado correctamente') {
-        console.log('Producto eliminado correctamente');
+      if (mensaje === 'Producto deshabilitado correctamente') {
+        console.log('Producto deshabilitado correctamente');
+        res.redirect('/admin');
+      } else {
+        console.log('El Producto no existe');
+        res.status(404).send('El Producto no existe');
+      }
+    }
+  });
+});
+
+app.post('/habilitar/:id', (req, res) => {
+  const id_prod = req.params.id;
+  const query = `CALL PRC_HABI_PROD(?)`;
+  mysqlConnection.query(query, [id_prod], (error, results) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send('Error al eliminar el producto');
+    } else {
+      const mensaje = results[0][0].mensaje;
+      if (mensaje === 'Producto deshabilitado correctamente') {
+        console.log('Producto deshabilitado correctamente');
         res.redirect('/admin');
       } else {
         console.log('El Producto no existe');

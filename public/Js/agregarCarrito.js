@@ -39,6 +39,8 @@ function aggCar(num) {
             showConfirmButton: false,
             timer: 3000
         });
+        const prods = carrito.carro.length;
+        document.getElementById('cantidadCarro').innerHTML = prods;
     }
-    console.log(carrito);
+    
 }

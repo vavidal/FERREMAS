@@ -8,7 +8,7 @@
 .btn-naranja {
   margin-bottom: auto;
   background-color: #DC661F;
-  color: #DC661F;
+  color: White;
   border: none;
 }
 
@@ -178,4 +178,12 @@ footer a:hover {
 
 footer p {
   color: #FFFFFF;
+}
+
+.cart-count {
+  background-color: #FF7F00;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 12px;
 }

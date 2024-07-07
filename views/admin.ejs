@@ -27,6 +27,7 @@
                 <th scope="col">Tipo de Producto</th>
                 <th scope="col">Nombre producto</th>
                 <th scope="col">Stock</th>
+                <th scope="col">¿Disponible?</th>
                 <th scope="col">Valor compra producto</th>
                 <th scope="col">Valor venta producto</th>
                 <th scope="col">IMAGEN</th>
@@ -42,17 +43,30 @@
                   <td><%= prod.TIPOP %></td>
                   <td><%= prod.NOMBRE %></td>
                   <td><%= prod.CANTIDAD %></td>
+                  <% if(prod.DISPO == 1){ %>
+                    <td>Sí</td>
+                  <% } else { %>
+                    <td>No</td>
+                  <% } %>
                   <td><%= prod.COMPRA %></td>
                   <td><%= prod.VENTA %></td>
                   <td><img src="/Images/Productos/<%= prod.NOMIMAGEN %>" alt="<%= prod.NOMIMAGEN %>" class="img-fluid" style="width: 100%; height: 100%;"></td>
-                  <td>
-                    <form action="/borrar/<%= prod.NUMERITO %>" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar el producto <%= prod.NUMERITO %>?');">
-                      <button type="submit" class="btn btn-danger" >Eliminar Producto</button>
-                    </form>
-                  </td>
+                  <% if(prod.DISPO == 1){ %>
+                    <td>
+                      <form action="/deshabilitar/<%= prod.NUMERITO %>" method="post" onsubmit="return confirm('¿Estás seguro que deseas deshabilitar el producto <%= prod.NUMERITO %>?');">
+                        <button type="submit" class="btn btn-danger" >Deshabilitar Producto</button>
+                      </form>
+                    </td>
+                  <% } else { %>
+                    <td>
+                      <form action="/habilitar/<%= prod.NUMERITO %>" method="post" onsubmit="return confirm('¿Estás seguro que deseas habilitar el producto <%= prod.NUMERITO %>?');">
+                        <button type="submit" class="btn btn-secondary" >Habilitar Producto</button>
+                      </form>
+                    </td>
+                  <% } %>
                   <td>
                     <form action="/admin/editar/<%= prod.NUMERITO %>" method="get" enctype="multipart/form-data" onsubmit="return confirm('¿Estás seguro de que deseas editar el producto <%= prod.NUMERITO %>?');">
-                      <button type="submit" class="btn btn-primary">Editar Producto</button>
+                      <button type="submit" class="btn btn-naranja">Editar Producto</button>
                     </form>
                   </td>
                   <td>
