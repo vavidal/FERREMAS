@@ -49,6 +49,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname)
   }
 });
+
 const upload = multer({ storage:storage, limits: { fieldSize: 25 * 1024 * 1024 } })
 
 app.get('/inicio', (req, res) => {
@@ -477,6 +478,7 @@ app.post('/webpay', asyncHandler(async function (request, response) {
   }*/
   const {total} = datos;
   const Valor = total;
+  
   let buyOrder = "O-" + Math.floor(Math.random() * 10000) + 1;
   let sessionId = "S-" + Math.floor(Math.random() * 10000) + 1;
   let amount = Valor;
@@ -581,7 +583,9 @@ app.post('/finalizar_venta', asyncHandler(async function (req,res){
     carro: carrito, 
     email: cliente.email
   };
+
   req.session.finalizar = finalizacion;
+
   try{
     const venta = `CALL PRC_VENTA('${cliente.nombre}','${cliente.email}','${cliente.direccion}',${cliente.rut},${total},'${token}',${vendedor});`;
     mysqlConnection.query(venta);

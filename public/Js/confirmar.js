@@ -1,7 +1,6 @@
 function carr(car) {
     return Promise.all(car.map(item => {
         return new Promise((resolve, reject) => {
-            console.log('Making AJAX request for item:', item);
             $.ajax({
                 url: '/paso-1',
                 type: 'GET',
@@ -93,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem("isLogged", "true");
                 localStorage.setItem("userData", JSON.stringify(data));
             }
+            document.getElementById('cantidadCarro').innerHTML = 0;
         })
         .catch(error => {
             console.error('Error in process:', error);

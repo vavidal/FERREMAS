@@ -8,6 +8,7 @@ function cerrar() {
 }
 
 if (login == "true") {
+    
     fetch("/HTML/navWorker.html")
     .then(response => response.text())
     .then(data => {
@@ -18,6 +19,7 @@ if (login == "true") {
         document.getElementById('cantidadCarro').innerHTML = prods;
     })
     .catch(error => console.error('Error cargando el navbar:', error));
+
     jQuery(function() {
         $('#datos').empty();
         $('#datos').append(`

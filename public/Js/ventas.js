@@ -50,7 +50,7 @@ function filtrar(){
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#numSeguimiento" data-bs-whatever="${venta.NUMBOLETA}" data-bs-email="${venta.EMAIL}" >
-                                        Despacha la Venta
+                                        Cambiar Número de Seguimiento
                                     </button>
                                 </td>
                                 <td>
