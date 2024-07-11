@@ -29,7 +29,7 @@ itemCarrito.addEventListener('click', function(event) {
     }
 });
 
-// Función para actualizar la cantidad de un producto
+//Actualizar la cantidad de un producto
 function updateQuantity(button, action) {
     var input = button.parentNode.querySelector('input[type=number]');
     var fila = button.closest('.fila-carrito');
@@ -61,7 +61,7 @@ function updateQuantity(button, action) {
 }
 
 
-// Función para actualizar el total del carrito
+//Actualizar el total del carrito
 function actualizarTotalCarrito(){
     var filasCarrito = itemCarrito.querySelectorAll(".fila-carrito");
     var totalCarrito = 0;

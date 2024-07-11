@@ -1,3 +1,4 @@
+//2
 function carr(car) {
     return Promise.all(car.map(item => {
         return new Promise((resolve, reject) => {
@@ -20,7 +21,7 @@ function carr(car) {
         });
     }));
 }
-
+//1
 function fin(datos, carrito, token) {
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -43,7 +44,7 @@ function fin(datos, carrito, token) {
         });
     });
 }
-
+//3
 function envEmail(email, html, total) {
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -65,7 +66,7 @@ function envEmail(email, html, total) {
         });
     });
 }
-
+//Funcion principal
 document.addEventListener('DOMContentLoaded', function() {
     const data = JSON.parse(localStorage.getItem("userData"));
     var datos = JSON.parse(localStorage.getItem("final"));

@@ -8,7 +8,7 @@ try{
 }catch(error){
 }
 
-
+//agregar al carrito
 function aggCar(num) {
     let aidi = num;
     let verificar = false;

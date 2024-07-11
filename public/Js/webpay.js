@@ -20,7 +20,7 @@ function action() {
     }
     cont.innerHTML = "Total a pagar: " + texto;
 }
-
+//Guarda datos de la venta
 function guardarDatos(){
     var total = localStorage.getItem("total");
     var ordenCompra = localStorage.getItem("orden");
