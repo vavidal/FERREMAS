@@ -53,12 +53,12 @@
                       $<%= prod.VAL%1000 %> CLP
                         <% } %>
         </h3>
-        <% if(tool.CANTIDAD>0){ %>
+        <% if(prod.CANTIDAD>0){ %>
           <button class="btn btn-warning mt-2"
-            onclick="event.stopPropagation(); aggCar(<%= tool.NUMERITO %>);">Agregar al carrito</button>
+            onclick="event.stopPropagation(); aggCar(<%= prod.NUMERITO %>);">Agregar al carrito</button>
           <% }else{ %>
             <button class="btn btn-warning mt-2"
-            onclick="event.stopPropagation(); aggCar(<%= tool.NUMERITO %>);" disabled>Agregar al carrito</button>
+            onclick="event.stopPropagation(); aggCar(<%= prod.NUMERITO %>);" disabled>Agregar al carrito</button>
           <% } %>
       </div>
     </div>

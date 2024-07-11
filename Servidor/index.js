@@ -108,6 +108,11 @@ app.post('/valid_productos', upload.single('file'),(req, res)=> {
  const {
       tipoProd,
       nombreProd,
+      marcaProd,
+      modeloProd,
+      anchoProd,
+      altoProd,
+      pesoProd,
       stockProd,
       costoProducto,
       ventaProducto,
@@ -115,11 +120,11 @@ app.post('/valid_productos', upload.single('file'),(req, res)=> {
     } = req.body;
   
     // Check for required fields first
-    if (!tipoProd || !nombreProd || !stockProd || !costoProducto || !ventaProducto || !descripcion || !req.file) {
+    if (!tipoProd || !nombreProd || !marcaProd || !modeloProd || !anchoProd || !altoProd || !pesoProd || !stockProd || !costoProducto || !ventaProducto || !descripcion || !req.file) {
       return res.status(400).send('Todos los campos son obligatorios.');
     }
     const imagen = req.file.filename;
-    const registrar = `CALL PRC_INS_PRODUCTO(?, ?, ?, ?, ?, ?, ?)`;
+    const registrar = `CALL PRC_INS_PRODUCTO(?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)`;
     mysqlConnection.query(
       registrar,
       [
@@ -129,7 +134,12 @@ app.post('/valid_productos', upload.single('file'),(req, res)=> {
         costoProducto,
         ventaProducto,
         descripcion,
-        imagen
+        imagen,
+        marcaProd,
+        modeloProd,
+        anchoProd,
+        altoProd,
+        pesoProd
       ],
       function (error) {
         if (error) {
